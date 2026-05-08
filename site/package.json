@@ -1,0 +1,23 @@
+{
+  "name": "mm-workshop-site",
+  "version": "0.1.0",
+  "description": "Starlight docs site for the Mid-Market Seller GitHub Copilot Workshop",
+  "type": "module",
+  "scripts": {
+    "sync": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/sync-content.ps1",
+    "predev": "npm run sync",
+    "prebuild": "npm run sync",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/starlight": "^0.37.6",
+    "astro": "^5.17.2",
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3"
+  }
+}

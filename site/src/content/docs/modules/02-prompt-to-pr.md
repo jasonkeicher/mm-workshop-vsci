@@ -25,7 +25,9 @@ Experience the **agentic SDLC** end-to-end. After this module, you can:
 
 ### Step 1 — Add the demo repo and kick off the agent (5 min)
 
-In the GitHub App, click the split button next to the repo selector → **"Add GitHub repository"**. Search for `demo_octocat_supply` and add it.
+In the GitHub App, find the **+ Add repository** control (near the repo selector at the top). Search for `demo_octocat_supply` and add it.
+
+> **Heads-up:** `demo_octocat_supply` requires the same alpha access as the GitHub App itself. If you can search and add it, you're good. If it doesn't show up, flag the facilitator — see Troubleshooting for the fallback.
 
 **Immediately** start a new Copilot session in the repo with this prompt (don't tour while it runs — let the agent work):
 
@@ -39,11 +41,13 @@ I want to add a Cart Page to the frontend application. The page should:
 Use the existing product and cart patterns in the codebase.
 ```
 
-Pick **Claude Sonnet 4.6** (or better) as the model. Choose **Interactive** mode for the first run.
+For the model, pick any **Claude Sonnet** option from the model picker — the default is fine. For mode, choose **Agent** (the multi-step option) since this is a multi-file build.
 
 ### Step 2 — Worktree callout (2 min)
 
-While the agent works, right-click the session in the sidebar → **"Reveal in Finder"** (Mac) / **"Show in Explorer"** (Win). The session lives in its own folder under `.copilot/`. **This is why parallel agents don't conflict** — each session gets its own worktree.
+While the agent works, right-click the session in the sidebar → **"Reveal in Finder"** (Mac) / **"Show in Explorer"** (Win). The session lives in its own folder under `.copilot/`.
+
+> **What's a worktree?** It's just a copy of the repo in its own folder. The agent works there in isolation so it can't break anything in your main checkout — and so multiple agents can work on the same repo at once without colliding.
 
 Click **"Open in VS Code"** (top-right of the session) if you want to step out to a full IDE — it opens the worktree directly.
 
@@ -62,8 +66,10 @@ If the agent is still mid-implementation, glance at the **Changes** view to see 
 Once the agent reports done, in the session's built-in terminal:
 
 ```bash
-make dev
+npm run dev
 ```
+
+> **Mac/Linux note:** the repo's README may list `make dev` as an alternative — either works. **Windows users**, stick with `npm run dev` (most stock Windows machines don't have `make` installed).
 
 Open the **built-in browser** tab (experimental flag from Module 1) → navigate to `http://localhost:3000`. Test:
 
@@ -73,6 +79,8 @@ Open the **built-in browser** tab (experimental flag from Module 1) → navigate
 
 If something doesn't work, prompt the agent: *"The cart icon doesn't update when I add items. Investigate and fix."*
 
+**Time-box this step.** If the app won't start after one fix attempt, skip ahead to Step 5 — you'll still see the PR / Code Review / Agent Merge flow even without running the app live.
+
 ### Step 5 — Create and review the PR (12 min)
 
 Ask the agent: *"Looks good. Create a pull request."*
@@ -80,25 +88,28 @@ Ask the agent: *"Looks good. Create a pull request."*
 When the PR opens:
 
 - Read the **PR description** — it's not "Added files," it's a meaningful summary.
-- Watch **CI/CD checks** kick off.
-- **Copilot Code Review** posts inline comments. Read at least 3.
-- Click **"Fix unresolved comments"** — the agent addresses all CCR feedback in one go.
+- Watch the automated **CI/CD checks** kick off (CI = the test/build pipeline that runs on every PR).
+- **Copilot Code Review** posts inline comments on the diff — read at least 3.
+- Click **"Fix unresolved comments"** (or whatever the equivalent button is labeled) — the agent addresses all the Copilot Code Review feedback in one go.
+
+> UI labels may shift in alpha — if you can't find an exact button, look for one near the comments that says something like "Fix" or "Address."
 
 ### Step 6 — Try Agent Merge (5 min)
 
-On the PR page, click **"Agent Merge"**. Read the description: the agent now continuously scans for CI failures, CCR comments, CodeQL findings, and human review feedback — driving the PR toward merge-readiness.
+On the PR page, look for an **"Agent Merge"** button (label may vary in alpha). Read its description: the agent now continuously scans for CI failures, Copilot Code Review comments, CodeQL findings (CodeQL = GitHub's security scanner), and human review feedback — driving the PR toward merge-readiness.
 
 > Important: it will **not** auto-merge. It waits for a human approval. The point isn't to remove the human — it's to make their review valuable instead of rubber-stamping formatting fixes.
 
 ### Step 7 — Seller Playbook reading & reflection (13 min)
 
-Stop driving and read through the **Seller Playbook** below. You'll talk to it during the debrief.
+1. **Read** the Seller Playbook below (~8 min). Focus on the agentic-vs-chat framing and the objection handler.
+2. **Pick one customer** (~5 min) you've talked to in the last 30 days who would care about this workflow. Jot down which talk-track question you'd open with. You'll share at debrief.
 
 ---
 
 ## Stretch Goals (take-home)
 
-- **Fleet Mode for Order Tracking** — in the same repo open a new session in **Plan** mode, prompt for a multi-component order tracking page, then **"Approve and implement with Fleet"** → multiple agents spin up in parallel, each in its own worktree, each producing its own PR. **This is where AI Credit consumption gets serious — and so does the customer value.**
+- **Fleet Mode for Order Tracking** — in the same repo open a new session in **Plan** mode (a non-executing mode where the agent proposes work first, then you approve it for parallel execution). Prompt for a multi-component order tracking page, then click **"Approve and implement with Fleet"** → multiple agents spin up in parallel, each in its own worktree, each producing its own PR. **This is where AI Credit consumption gets serious — and so does the customer value.**
 - Run the **Compliance Workflow** demo (Workflows tab) — schedule a recurring compliance check that combines a Copilot Space with the repo. Generates a structured Issue report.
 - Try a different model (Claude Opus 4.6) for one session and observe the difference in token consumption.
 - Open one of your own real repos and ask the agent to build something small.
@@ -154,14 +165,15 @@ Stop driving and read through the **Seller Playbook** below. You'll talk to it d
 | Symptom | Fix |
 |---|---|
 | Agent fails to spin up | Check `copilot --version` works in terminal; restart the GitHub App |
+| `demo_octocat_supply` not findable | Confirm alpha access (same as the GitHub App itself); ask the facilitator. **Fallback:** any small public repo of your own — prompt for a small feature instead of the Cart Page. |
 | Built-in browser tab missing | Settings → Experimental Flags → enable *Browser tabs* (covered in Module 1) |
-| Fleet mode session fails to start | Known alpha flake. Re-trigger; or fall back to Autopilot (sequential) |
-| `make dev` fails | Open built-in terminal: `npm install` then `make dev` again; check Node version (`node -v` should be 18+) |
+| Fleet mode session fails to start | Known alpha flake. Re-trigger; or fall back to Autopilot (Autopilot = the sequential, single-agent mode — same flow, one agent at a time) |
+| `npm run dev` (or `make dev`) fails | Open built-in terminal: `npm install` then `npm run dev` again; check Node version (`node -v` should be 18+) |
 | Agent Merge button missing | Settings → Experimental Flags → enable *Agent tools* (covered in Module 1) |
 
 ---
 
 ## Reference
 
-- Internal demo doc (longer version of the same content with video links): `mm-workshop-files/demo-docs/src/content/docs/demos/copilot/copilot-github-app.mdx`
 - GitHub App download & release notes: <https://github.com/github/github-app>
+- Internal facilitator-only demo doc (longer version with video links, GitHub-only): `mm-workshop-files/demo-docs/src/content/docs/demos/copilot/copilot-github-app.mdx`

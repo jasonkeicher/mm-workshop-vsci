@@ -39,18 +39,18 @@ Write your scenario down. The whole module is grounded in this single brief.
 
 In the GitHub App, click the **+ Add repository** control (near the repo selector at the top). You have two easy options:
 
-- **Easiest:** create a brand-new empty repo named `copilot-deck` on github.com first (`gh repo create copilot-deck --private --confirm` or via the github.com UI), then add it from the App.
+- **Easiest:** create a brand-new empty repo named `copilot-deck` on github.com (use the **New repository** button in the github.com UI — takes 30 seconds), then add it from the App.
 - **Or:** point at any small empty repo of your own.
 
 Open the repo in the App and start a fresh Copilot session. For the model, pick any **Claude Sonnet** — the default is fine. For mode, choose **Agent**.
 
-> **What's Marp?** Marp is a tool that turns plain Markdown into slide decks (PDF or HTML). We use it because Copilot writes Markdown natively — so the agent can produce a real deck, not just an outline. **You don't have to install Marp yourself** — the agent will install it inside the session's sandboxed worktree in Step 4.
+> **What's Marp?** Marp is a tool that turns plain Markdown into slide decks (PDF or HTML). We use it because Copilot writes Markdown natively — so the agent can produce a real deck, not just an outline. **You don't have to install Marp yourself** — the agent will install it inside the session's own private copy of the repo in Step 4.
 
 ### Step 3 — Have the agent create your `notes.md` ground truth (7 min)
 
-You won't create a real Copilot Space in this module (that's a stretch goal), but you'll prompt as if you have one.
+> **What's a Copilot Space?** A curated bundle of files and links you can attach to prompts so the agent always grounds its answers in your source material — a reusable knowledge base.
 
-> **What's a Copilot Space?** A curated bundle of files and links you can attach to prompts so the agent always grounds its answers in your source material — a reusable knowledge base. Today we'll fake it with a single `notes.md` file the agent writes for you.
+You won't create a real Copilot Space in this module (that's a stretch goal). Instead, we'll fake it with a single `notes.md` file the agent writes for you, and prompt as if you had a Space.
 
 In your Copilot session, paste this prompt (fill in the bracketed bits with your scenario from Step 1):
 
@@ -93,12 +93,14 @@ Produce a Marp-flavored markdown deck named deck.md with these properties:
 Then, in the session terminal:
 1. Initialize npm if needed and install Marp locally to this repo:
    npm init -y && npm install --save-dev @marp-team/marp-cli
-2. Build deck.html: npx marp deck.md --html
+2. Build the deck: npx marp deck.md
 
 Be specific to this customer. No filler. No "thank you" slides.
 ```
 
-The agent will write `deck.md`, install Marp inside the session's sandboxed worktree, and build `deck.html`.
+The agent will write `deck.md`, install Marp inside the session's own private copy of the repo, and build `deck.html`.
+
+> **Heads up:** these commands run in the session's Linux sandbox — not your local PowerShell. The `&&` chaining and `npm`/`npx` calls are the agent's job; you don't need to run them yourself.
 
 **What you should see in the Changes panel:** `deck.md` with `---` slide separators, frontmatter at the top setting `marp: true` and `theme: gaia`, and `<!-- speaker notes -->` HTML comments under each slide. Plus `deck.html` once Marp finishes.
 
@@ -113,6 +115,10 @@ Serve deck.html on http://localhost:8000 with a simple static server
 
 Open the **built-in browser** tab (experimental flag from Module 1) and navigate to `http://localhost:8000/deck.html`. Browse all slides. Note 3 things you'd change.
 
+> **First-run note:** `npx http-server` downloads the package the first time — expect ~10 seconds of silence before it's ready. Wait for the agent to confirm the server is running before opening the browser tab.
+>
+> The dev server stays running for the rest of the module — Steps 6 and 7 just refresh this same browser tab; you don't need to restart anything.
+>
 > If the built-in browser tab is missing, enable it via Settings → Experimental Flags → *Browser tabs* (covered in Module 1).
 
 ### Step 6 — Iterate on tone, structure, and visuals (10 min)
@@ -122,9 +128,9 @@ In the same Copilot session, use focused prompts. **Don't ask for everything at 
 > **Hard guardrail: cap yourself at 3–4 surgical passes.** Perfect is the enemy of done; you can keep iterating after the workshop.
 
 - *"Slide 3's headline is generic. Rewrite it to lead with the customer's pain, not the product. Then rebuild deck.html."*
-- *"Add a slide between 5 and 6 with a concrete cost example: a 200-dev team running 50% agentic, 50% chat for one month. Rebuild deck.html."*
-- *"The speaker notes on slide 8 are too long. Tighten to 30 seconds, no jargon. Rebuild deck.html."*
-- *"Restructure the deck so the CTA appears at slide 7, not the end. Move the pricing detail to an appendix section. Rebuild deck.html."*
+- *"Add a slide between 5 and 6 with a concrete cost example: a 200-dev team running 50% agentic, 50% chat for one month. Then rebuild deck.html."*
+- *"The speaker notes on slide 8 are too long. Tighten to 30 seconds, no jargon. Then rebuild deck.html."*
+- *"Restructure the deck so the CTA appears at slide 7, not the end. Move the pricing detail to an appendix section. Then rebuild deck.html."*
 
 Each prompt = a session turn. Refresh the built-in browser tab after each rebuild.
 
@@ -150,7 +156,7 @@ For each red flag, do one more prompt-edit pass.
 
 Ask the agent: *"Commit notes.md, deck.md, and deck.html with a descriptive message, then open a pull request."*
 
-The agent will create a PR in the App, just like in Module 2. (You don't have to merge it — the PR itself is your portable artifact you can pull up on any device.)
+The agent runs `git` for you inside the session — **you don't need a local clone of the repo on your laptop**. The PR shows up on github.com just like in Module 2. (You don't have to merge it — the PR itself is your portable artifact you can pull up on any device.)
 
 > **If you're behind on time, skip this step** — it's optional. Step 9 (Seller Playbook) matters more for the debrief.
 
@@ -221,4 +227,5 @@ Scan the Seller Playbook below before debrief — you'll talk to it. Focus on th
 | Marp render breaks | Check frontmatter: `marp: true` and `theme: gaia` in `deck.md` frontmatter |
 | Speaker notes don't show | Marp comment syntax: `<!-- speaker notes here -->` (must be HTML comment, not Markdown) |
 | Agent rewrites too much | Be more surgical: name the slide and the change. "On slide 5, replace headline only." |
-| PDF export fails | Session sandbox may be missing Chrome. Stick with `--html` output, or ask the agent to retry with `npx marp deck.md --pdf --allow-local-files`. |
+| Agent stops mid-build / session times out | Just say *"continue"* in the same session — the session's worktree state is preserved across turns |
+| PDF export fails | Session sandbox may be missing Chrome. Stick with the HTML output, or ask the agent to retry with `npx marp deck.md --pdf --allow-local-files`. |

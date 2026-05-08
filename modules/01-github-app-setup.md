@@ -18,9 +18,11 @@ Get every attendee to the same baseline: a working GitHub App they can drive imm
 
 ## Prereq Verification (3 min)
 
+Open a terminal and run each of these. You're looking for output that looks like the success examples below — not an error or "command not found."
+
 - [ ] You completed [prerequisites.md](../prerequisites.md) the day before.
-- [ ] `copilot --version` works in a terminal.
-- [ ] `gh auth status` is green.
+- [ ] `copilot --version` → prints a version number (e.g. `copilot 0.x.x`).
+- [ ] `gh auth status` → includes a line like `Logged in to github.com account <your-username>`.
 
 If any of these fail, **flag the facilitator now**. We'll fix it live — that's the point of doing setup as a group.
 
@@ -30,11 +32,13 @@ If any of these fail, **flag the facilitator now**. We'll fix it live — that's
 
 ### Step 1 — Install and launch the GitHub App (5 min)
 
+> **Note:** "GitHub App" here means the new **desktop GitHub App (alpha)** — a standalone Copilot client. This is *not* the same thing as the org-installable "GitHub Apps" you may have seen on github.com.
+
 If you haven't already:
 
 1. Download from <https://github.com/github/github-app>. (If you 404, ask in the team Slack — alpha access required.)
 2. Install per platform instructions; launch the app.
-3. Sign in with your GitHub identity. Authorize the OAuth prompts in the browser.
+3. Sign in with your GitHub identity. A browser tab will open asking you to sign in to GitHub and authorize the app — click **Authorize** on each prompt.
 4. Bump zoom to 110–125% (`Ctrl/Cmd +`) for readability during the session.
 
 You should land on the **Home** screen with an empty repo list.
@@ -53,29 +57,33 @@ Restart the app if prompted.
 
 Click through each top-level surface so you know where things live. **Don't go deep — just orient.**
 
-- **Home** → Skills & Extensions panel (repo skills, MCP servers, custom agents). The "Needs Your Attention" section surfaces PRs and issues awaiting you.
-- **Pull Requests tab** → all open PRs across your repos, identical to github.com. You can start a session *from* any PR.
-- **Issues tab** → start a session directly from an issue (e.g., "Improve test coverage for API"). The issue body becomes the agent's brief.
+> Exact UI labels may shift in alpha — orient by purpose, not exact wording.
+
+- **Home dashboard** → your repos, available skills/extensions, and items waiting on you (PRs, issues).
+- **Pull Requests** → all open PRs across your repos, like github.com. You can start a Copilot session *from* any PR.
+- **Issues** → start a session directly from an issue (e.g., "Improve test coverage for API") — the issue body becomes the agent's brief.
 - **Chat** (top-level, not repo-scoped) → general-purpose: research, web search, email triage. Not just code.
-- **Workflows tab** → scheduled / on-demand automated agent runs. (Module 2 attendees revisit this; everyone can come back later.)
+- **Workflows** → scheduled or on-demand automated agent runs. (Stretch goal in Module 2; everyone can come back later.)
 
 ### Step 4 — Add a repo and run a smoke-test prompt (5 min)
 
-In the GitHub App, click the split button next to the repo selector → **"Add GitHub repository"**. Add any small public repo you have access to — `octocat/hello-world` works if you don't have one in mind.
+In the GitHub App, find the **+ Add repository** control (near the repo selector at the top) and add any small public repo you have access to — `octocat/hello-world` works if you don't have one in mind.
 
-Start a new Copilot session in the repo and run:
+Start a new Copilot session in the repo and run this prompt:
 
 ```text
 Summarize this repo. What does it do? What are the top 3 files I should read first?
 ```
 
-Pick **Claude Sonnet 4.6** (or better) as the model. **Chat mode** (not Interactive) — this is a single-turn smoke test.
+For the model, pick any **Claude Sonnet** option from the model picker — the default is fine. (We're just smoke-testing that Copilot responds.)
 
 You should get a structured response naming files in the repo within 30–60 seconds. **If you get a model error, raise your hand — we'll fix it live.**
 
-### Step 5 — Quick worktree peek (1 min)
+### Step 5 — Optional curiosity peek (1 min)
 
-If your smoke-test session created any files (it usually doesn't for a summary), right-click the session in the sidebar → **"Reveal in Finder"** (Mac) / **"Show in Explorer"** (Win). Sessions live in their own folder under `.copilot/`. **This is why parallel agents don't conflict** — you'll lean on this if you pick Module 2.
+Your Copilot session ran in a sandboxed folder on your laptop. If you're curious where, right-click the session in the sidebar → **"Reveal in Finder"** (Mac) / **"Show in Explorer"** (Win). It lives under a `.copilot/` directory.
+
+*Why we mention this:* every session gets its own isolated folder, so multiple agents can work on the same repo at once without stepping on each other. **Module 2 attendees will see this in action.** Everyone else: you can skip this step.
 
 ---
 

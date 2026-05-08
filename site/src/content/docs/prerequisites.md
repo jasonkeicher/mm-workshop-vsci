@@ -51,8 +51,9 @@ brew install --cask visual-studio-code
 Run each of these — every command should succeed without a browser prompt:
 
 ```bash
-gh auth status
-gh copilot --version          # if using the gh-copilot extension
+gh auth status                # expect: "Logged in to github.com account <your-username>"
+copilot --version             # native Copilot CLI (preferred)
+# gh copilot --version        # only if you installed via the gh extension instead
 code --version
 node --version
 git --version

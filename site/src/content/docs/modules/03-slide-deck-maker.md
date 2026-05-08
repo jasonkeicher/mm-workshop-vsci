@@ -5,7 +5,7 @@ description: "Generate a customer-ready deck from a prospect question with Copil
 
 > **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** Copilot CLI (primary) or GitHub App / VS Code (alternative)
 >
-> **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. (Module 1 verified `copilot --version`; this module mostly stays in the CLI.)
+> **Prereq:** [Module 1 · GitHub App Setup](../01-github-app-setup/) complete. (Module 1 verified `copilot --version`; this module mostly stays in the CLI.)
 >
 > By the end of this module you'll have generated a polished, customer-ready slide deck answering a real prospect question — replacing 4–6 hours of manual deck-building with ~30 minutes of prompting.
 

@@ -28,7 +28,7 @@ Doors should open ~15 min before T+00:00 so attendees can sort last-mile setup i
 You only have 5 minutes. Pick **2** of the following; the others move to closing remarks:
 
 1. **Why we're doing this** — Sellers must use the product to sell the product. Today every attendee personally drives Copilot through a real workflow.
-2. **The commercial pivot** — Walk the [Seller Playbook Overview](seller-playbook-overview.md) "60-Second Narrative." Don't go deep — they'll see it firsthand in their module.
+2. **The commercial pivot** — Walk the [Seller Playbook Overview](../seller-playbook-overview/) "60-Second Narrative." Don't go deep — they'll see it firsthand in their module.
 3. **How today works** — 25-min required setup, then pick 1 of 3 paths for 50 min, then debrief. Three more modules go home with you as self-study.
 4. **The bring-back homework** — Use your artifact in your next real customer call. Share it back in the team channel.
 5. **Logistics** — Slack channel, who to grab if stuck, no break (it's only 90 min).

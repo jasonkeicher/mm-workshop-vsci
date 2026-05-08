@@ -21,7 +21,7 @@ Get every attendee to the same baseline: a working GitHub App they can drive imm
 
 ## Prereq Verification (3 min)
 
-- [ ] You completed [prerequisites.md](../prerequisites.md) the day before.
+- [ ] You completed [prerequisites.md](../../prerequisites/) the day before.
 - [ ] `copilot --version` works in a terminal.
 - [ ] `gh auth status` is green.
 
@@ -86,9 +86,9 @@ If your smoke-test session created any files (it usually doesn't for a summary),
 
 You're set up. Pick **one** of these for the rest of the live session:
 
-- **[Module 2 · Prompt to PR](02-prompt-to-pr.md)** — drive an agent from a single prompt through implementation, browser test, PR, code review, and Agent Merge. Best for "see the full agentic SDLC."
-- **[Module 3 · Slide Deck Maker](03-slide-deck-maker.md)** — generate a customer-ready deck from a real prospect question. Best for "I build customer decks often."
-- **[Module 4 · Vibe-Code a Game](04-vibe-code-game.md)** — build a working browser game end-to-end, no manual code. Best for the "I built this in an hour" story.
+- **[Module 2 · Prompt to PR](../02-prompt-to-pr/)** — drive an agent from a single prompt through implementation, browser test, PR, code review, and Agent Merge. Best for "see the full agentic SDLC."
+- **[Module 3 · Slide Deck Maker](../03-slide-deck-maker/)** — generate a customer-ready deck from a real prospect question. Best for "I build customer decks often."
+- **[Module 4 · Vibe-Code a Game](../04-vibe-code-game/)** — build a working browser game end-to-end, no manual code. Best for the "I built this in an hour" story.
 
 If you pre-selected via the workshop form, head straight to that module. Otherwise, scan the three and pick now.
 

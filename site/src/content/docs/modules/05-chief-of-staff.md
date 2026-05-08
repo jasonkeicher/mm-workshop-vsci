@@ -3,7 +3,7 @@ title: "Module 5 · Chief of Staff (Work-IQ)"
 description: "Take-home self-study: connect Copilot to your M365 locally for weekly summary + meeting brief."
 ---
 
-> **📚 Take-home self-study module.** Not selectable as a live workshop path under the current format — it doesn't depend on the GitHub App and runs entirely in your local terminal. Fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../seller-playbook-overview.md).
+> **📚 Take-home self-study module.** Not selectable as a live workshop path under the current format — it doesn't depend on the GitHub App and runs entirely in your local terminal. Fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../../seller-playbook-overview/).
 >
 > **Time:** 90 min · **Format:** Solo on personal laptop · **Surface:** Copilot CLI + `microsoft/work-iq`
 >

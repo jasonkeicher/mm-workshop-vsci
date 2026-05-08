@@ -5,7 +5,7 @@ description: "Drive a coding agent from prompt to merged PR end-to-end with Copi
 
 > **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** GitHub App (alpha)
 >
-> **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. The app is installed, signed in, and you've run a smoke-test prompt.
+> **Prereq:** [Module 1 · GitHub App Setup](../01-github-app-setup/) complete. The app is installed, signed in, and you've run a smoke-test prompt.
 >
 > By the end of this module you'll have driven a coding agent from a single prompt through implementation, a built-in browser test, a pull request, automated code review, and Agent Merge — without leaving the GitHub App.
 

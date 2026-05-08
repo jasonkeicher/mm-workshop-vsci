@@ -3,7 +3,7 @@ title: "Module 6 · LLM-Assist · Account Research"
 description: "Take-home self-study: spin up a Codespace from github/llm-assist and produce a real account artifact."
 ---
 
-> **📚 Take-home self-study module.** Not selectable as a live workshop path under the current format — it requires a Codespace and runs independently of the GitHub App. Fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../seller-playbook-overview.md).
+> **📚 Take-home self-study module.** Not selectable as a live workshop path under the current format — it requires a Codespace and runs independently of the GitHub App. Fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../../seller-playbook-overview/).
 >
 > **Time:** 90 min · **Format:** Solo in a Codespace · **Surface:** `github/llm-assist` Codespace + Copilot Chat (Agent mode)
 >

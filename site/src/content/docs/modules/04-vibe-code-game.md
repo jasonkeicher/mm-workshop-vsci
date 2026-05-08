@@ -5,7 +5,7 @@ description: "Build a working browser game in under an hour with no manual code.
 
 > **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** GitHub App (default; Copilot CLI or VS Code Agent mode also work)
 >
-> **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete.
+> **Prereq:** [Module 1 · GitHub App Setup](../01-github-app-setup/) complete.
 >
 > By the end of this module you'll have built a working browser game from scratch, with zero manual code, in under an hour — and you'll have a take-home path to ship it to the world via GitHub Pages.
 

@@ -38,6 +38,20 @@ foreach ($f in $files) {
   $body = [System.IO.File]::ReadAllText($srcPath, $utf8NoBom)
   # Strip a leading H1 if present (Starlight renders the frontmatter title as the page heading)
   $body = [regex]::Replace($body, '^\s*#\s+[^\r\n]+(\r?\n)+', '')
+  # Rewrite relative .md links to clean Starlight routes:
+  #   1. Drop the `.md` extension and add a trailing `/` (Starlight serves directory-style URLs).
+  #   2. Add one extra `../` prefix because every non-index page is rendered at a deeper
+  #      directory level than its source file (e.g. `modules/01-foo.md` → `/modules/01-foo/`).
+  #      Index.md is served at `/` so it does NOT need the extra `../`.
+  # Absolute paths, anchors, and external links are left alone.
+  $isIndex = ($f.dest -ieq 'index.md')
+  $body = [regex]::Replace($body, '\]\((?!https?://|mailto:|#|/)([^)\s#]+)\.md(#[^)]*)?\)', {
+    param($m)
+    $path = $m.Groups[1].Value -replace '\\', '/'
+    $anchor = $m.Groups[2].Value
+    $prefix = if ($isIndex) { '' } else { '../' }
+    return "]($prefix$path/$anchor)"
+  })
   $fm = "---`ntitle: `"$($f.title)`"`ndescription: `"$($f.desc)`"`n---`n`n"
   [System.IO.File]::WriteAllText($destPath, $fm + $body, $utf8NoBom)
   Write-Host "wrote $($f.dest)"

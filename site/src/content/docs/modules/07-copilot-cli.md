@@ -3,7 +3,7 @@ title: "Module 7 · Copilot CLI Deep Dive"
 description: "Take-home self-study: master the terminal-native Copilot agent, --yolo, /research, and MCP."
 ---
 
-> **📚 Take-home self-study module.** Not selectable as a live workshop path under the current format — it lives entirely in the terminal and runs independently of the GitHub App. Fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../seller-playbook-overview.md).
+> **📚 Take-home self-study module.** Not selectable as a live workshop path under the current format — it lives entirely in the terminal and runs independently of the GitHub App. Fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../../seller-playbook-overview/).
 >
 > **Time:** 90 min · **Format:** Solo · **Surface:** Copilot CLI in your terminal
 >

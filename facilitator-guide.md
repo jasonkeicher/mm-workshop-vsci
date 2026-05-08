@@ -58,8 +58,8 @@ End with a **2-min facilitator wrap**: top 2 themes you heard, and the take-home
 
 | Risk | Likelihood | Mitigation |
 |---|---|---|
-| **GitHub App alpha access denied for the room** | Medium | **Workshop-blocker.** Fallback plan: facilitator demos Module 1 + Module 2 live on the projector while attendees watch; everyone's Stage 2 becomes Module 3 (Slide Deck Maker — only needs Copilot CLI). Pre-flight: confirm 100% of attendees have alpha access 24h before. |
-| GitHub App alpha access denied for one attendee | Medium | Pivot them to Module 3 (Slide Deck) or Module 4 (Vibe-Code via Copilot CLI surface) — both work without the app. |
+| **GitHub App alpha access denied for the room** | Medium | **Workshop-blocker for Modules 1 and 2 hands-on.** Fallback plan: facilitator briefly demos the App if possible, then everyone uses the **No-App CLI fallback** in Module 3 (Slide Deck) or Module 4 (Vibe-Code). Pre-flight: confirm 100% of attendees have alpha access 24h before. |
+| GitHub App alpha access denied for one attendee | Medium | Pivot them to the **No-App CLI fallback** in Module 3 or Module 4. They can still complete a customer deck or game locally with the native Copilot CLI. |
 | Codespaces quota exhausted | Low (no Stage-2 module needs Codespaces under new format) | N/A for live session. Mention as risk only for take-home Module 6. |
 | M365 auth blocked by tenant policy | Low (no Stage-2 module needs M365) | N/A for live session. Mention as risk only for take-home Module 5. |
 | Copilot model unavailable / rate-limited | Low | Switch to a different model (GPT-4o, Sonnet) in Copilot Chat; document fallback in module handout |
@@ -74,6 +74,7 @@ End with a **2-min facilitator wrap**: top 2 themes you heard, and the take-home
 
 - [ ] Send pre-event form with the 3 Stage-2 module summaries; collect selections.
 - [ ] **Confirm GitHub App alpha access for every attendee** (workshop-blocker if denied).
+- [ ] Confirm the full `owner/repo` path for the Module 2 demo repo (`demo_octocat_supply`) and verify attendees can access it.
 - [ ] Validate prereqs checklist on a clean Win laptop and a clean Mac.
 - [ ] Pre-run Module 1 + each Stage-2 module end-to-end yourself; record any "gotcha" notes.
 - [ ] Draft the kickoff slide deck (out of scope for this workshop content but referenced here).

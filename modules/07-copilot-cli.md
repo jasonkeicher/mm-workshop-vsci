@@ -161,6 +161,27 @@ copilot "Write me a <language> script that <task>"
 EOF
 ```
 
+PowerShell equivalent:
+
+```powershell
+New-Item -Path "$HOME\.copilot-cheats" -ItemType Directory -Force | Out-Null
+@'
+# My Copilot CLI Playbook
+
+## Daily standup
+copilot "Summarize commits across my forked repos in the last 24h"
+
+## Issue triage
+copilot --yolo "Triage open bugs in <repo>; print suggested comments"
+
+## Research a customer
+copilot "/research <Customer> recent GitHub activity and engineering news"
+
+## Generate a one-off script
+copilot "Write me a <language> script that <task>"
+'@ | Set-Content -Path "$HOME\.copilot-cheats\playbook.md" -Encoding utf8
+```
+
 This is your take-home. Add to it every week.
 
 ---

@@ -36,8 +36,8 @@ Source: [GitHub Copilot is moving to usage-based billing](https://github.blog/ne
 |---|---|---|
 | Copilot Pro | $10 / mo | $10 |
 | Copilot Pro+ | $39 / mo | $39 |
-| **Copilot Business** | **$19 / user / mo** | **$19** (promo: **$30/user/mo June–Aug**) |
-| **Copilot Enterprise** | **$39 / user / mo** | **$39** (promo: **$70/user/mo June–Aug**) |
+| **Copilot Business** | **$19 / user / mo** | **$19** (promo June-Aug: **$30 in credits**) |
+| **Copilot Enterprise** | **$39 / user / mo** | **$39** (promo June-Aug: **$70 in credits**) |
 
 **Key mechanics:**
 

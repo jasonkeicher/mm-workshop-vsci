@@ -49,5 +49,5 @@ site/
         ├── prerequisites.md
         ├── seller-playbook-overview.md
         ├── facilitator-guide.md
-        └── modules/01..06-*.md
+        └── modules/01..07-*.md
 ```

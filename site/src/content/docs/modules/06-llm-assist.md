@@ -120,9 +120,16 @@ Section 3 is too generic. Run additional Kusto queries to find <specific data>
 and revise that section with concrete numbers grounded in query results.
 ```
 
-### Step 6 — Save to `generated-assets/` and commit (5 min)
+### Step 6 — Save securely to `generated-assets/` and commit (5 min)
 
-The artifact is yours. Save it, optionally commit to a private fork:
+The artifact is yours, but it may contain customer-confidential data. Before saving or committing:
+
+- Store it only in a private repo, private fork, or approved local folder.
+- Redact secrets, personal data, support-ticket details, and customer-confidential notes that do not belong in a repo.
+- Do **not** commit generated customer artifacts to a public repo or shared workshop repo.
+- Follow your team's customer-data handling rules before sharing outside the account team.
+
+After that review, save it and optionally commit to a private fork:
 
 ```bash
 git checkout -b customer-research/<customer>

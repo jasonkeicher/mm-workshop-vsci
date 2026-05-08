@@ -25,7 +25,7 @@ Use Copilot as your **personal Chief of Staff**. After this module, you can:
 - [ ] You can `gh auth status` cleanly.
 - [ ] Local terminal you're comfortable in (PowerShell, zsh, bash all fine).
 
-> **Privacy note**: Work-IQ runs **locally**. Your calendar/email data stays on your machine. No tenant admin install required, no data shared with third parties. This is a critical talking point for customers worried about data residency.
+> **Privacy note**: Work-IQ connectors run **locally** and authenticate as you. The calendar/email excerpts needed for a prompt are still processed by Copilot under the applicable GitHub/Microsoft data-protection terms; Work-IQ does not create a separate tenant-wide install or shared data warehouse. This distinction is critical when customers ask about data residency and approvals.
 
 ---
 
@@ -177,7 +177,7 @@ This is the artifact you bring to your next customer conversation.
 
 **Objection: "Our security team will never approve email/calendar data going to AI."**
 
-> "Work-IQ runs **locally on the user's machine**. The Copilot model receives the calendar/email content during the prompt, but there's no tenant-level install, no data warehouse, no shared store. The user authenticates as themselves to Microsoft 365 with their own credentials. From a data residency standpoint, it's identical to that user opening Outlook and reading their own inbox — Copilot just summarizes what they already see."
+> "Work-IQ connectors run **locally on the user's machine** and authenticate as that user to Microsoft 365. The Copilot model receives the calendar/email excerpts needed for the prompt under the applicable enterprise data-protection terms, but Work-IQ does not add a tenant-level install, data warehouse, or shared store. Security teams should approve that Copilot processing path explicitly; the point is controlled user-scoped access, not a new bulk data pipeline."
 
 ### Expansion play
 
@@ -199,7 +199,7 @@ This is the artifact you bring to your next customer conversation.
 | M365 auth fails with tenant policy error | Use a personal Microsoft account; or ask IT for a single-user consent for the Work-IQ device-code flow |
 | `/welcome` command not recognized | Skip it; prompt manually as in Step 3 |
 | Calendar returns empty | Check timezone in your prompt; explicitly include date ranges |
-| Agent invents meeting details | This is a hallucination flag — model is too small. Switch to Claude Opus or GPT-4.5 |
+| Agent invents meeting details | This is a hallucination flag — model is too small. Switch to Claude Opus or the strongest approved GPT model available in your picker |
 | Email draft is too generic | Provide more context in the prompt: paste the prior thread; specify tone and word count |
 
 ---

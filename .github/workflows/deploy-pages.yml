@@ -23,10 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Sync source markdown into Starlight content
-        shell: pwsh
-        run: ./scripts/sync-content.ps1
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20

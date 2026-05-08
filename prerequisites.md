@@ -22,7 +22,7 @@ Complete this **the day before the workshop**. The first 25 minutes of the works
 |---|---|---|
 | **VS Code** (latest) | All Stage-2 modules + take-home M7 | <https://code.visualstudio.com/> |
 | **GitHub CLI** (`gh`) | All modules | <https://cli.github.com/> |
-| **Copilot CLI** | All modules (Stage 2 + take-home) | `gh extension install github/gh-copilot` *or* native install per [docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) |
+| **Copilot CLI** (native `copilot`) | All modules + no-app fallbacks | Install the native CLI per [docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli). The legacy `gh copilot` extension is not enough for `--yolo`, MCP, or take-home CLI modules. |
 | **GitHub App** (alpha) | **Required for live workshop** (Module 1 + Stage-2 paths) | <https://github.com/github/github-app> |
 | **Node.js LTS** | Modules 2, 3, 4 (running demo apps + Marp) | <https://nodejs.org/> |
 | **Git** | All modules | <https://git-scm.com/downloads> |
@@ -34,6 +34,8 @@ winget install --id Git.Git -e
 winget install --id GitHub.cli -e
 winget install --id Microsoft.VisualStudioCode -e
 winget install --id OpenJS.NodeJS.LTS -e
+# Then install the native Copilot CLI:
+# https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli
 ```
 
 ### macOS quick-install (Homebrew)
@@ -41,6 +43,8 @@ winget install --id OpenJS.NodeJS.LTS -e
 ```bash
 brew install git gh node
 brew install --cask visual-studio-code
+# Then install the native Copilot CLI:
+# https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli
 ```
 
 ## 3. Auth Verification
@@ -49,8 +53,7 @@ Run each of these — every command should succeed without a browser prompt:
 
 ```bash
 gh auth status                # expect: "Logged in to github.com account <your-username>"
-copilot --version             # native Copilot CLI (preferred)
-# gh copilot --version        # only if you installed via the gh extension instead
+copilot --version             # native Copilot CLI; required for CLI modules and fallbacks
 code --version
 node --version
 git --version
@@ -59,7 +62,7 @@ git --version
 If `gh auth status` is missing, run:
 
 ```bash
-gh auth login --hostname github.com --git-protocol https --web -s admin:org
+gh auth login --hostname github.com --git-protocol https --web
 ```
 
 ## 4. VS Code Copilot Setup
@@ -73,7 +76,7 @@ gh auth login --hostname github.com --git-protocol https --web -s admin:org
 
 - **Module 1 (GitHub App Setup — required, live)**: After installing the app, enable experimental flags under **Settings → Experimental Flags**: *Browser tabs*, *Research command*, *Agent tools / Fleet mode*. (We'll re-verify this live.)
 - **Module 2 (Prompt to PR)**: No extras beyond Module 1.
-- **Module 3 (Slide Deck Maker)**: Marp CLI — `npm install -g @marp-team/marp-cli` (the module also covers this in Step 2).
+- **Module 3 (Slide Deck Maker)**: No global Marp install required. The module installs Marp locally inside the agent session.
 - **Module 4 (Vibe-Code a Game)**: A modern browser (Chrome/Edge/Safari) for testing.
 - **Module 5 (Chief of Staff — take-home)**: You'll authenticate to Microsoft 365 live during the module. No tenant-level install required.
 - **Module 6 (LLM-Assist — take-home)**: No local setup beyond `gh` — everything runs in a Codespace.
@@ -83,7 +86,7 @@ gh auth login --hostname github.com --git-protocol https --web -s admin:org
 
 | Symptom | Fix |
 |---|---|
-| `gh auth status` says "not logged in" | `gh auth login --web -s admin:org` |
+| `gh auth status` says "not logged in" | `gh auth login --web` |
 | Copilot Chat says "no model available" | Sign in again; check <https://github.com/settings/copilot> for an active license |
 | GitHub App download 404s | Request alpha access in the team Slack channel |
 | Codespaces won't start | Check quota at <https://github.com/settings/billing/summary>; try a 2-core machine type first |

@@ -4,6 +4,8 @@
 >
 > **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. Everything in this module happens inside a single Copilot session in the GitHub App — the agent writes the code, runs the dev server in the session's built-in terminal, and you play the game in the session's built-in browser.
 >
+> **No-App fallback:** If GitHub App alpha access is unavailable, use the **No-App CLI fallback** near the end of this module.
+>
 > By the end of this module you'll have built a working browser game from scratch, with zero manual code, in under an hour — and you'll have a take-home path to ship it to the world via GitHub Pages.
 
 ---
@@ -112,6 +114,23 @@ Push the agent on:
 Scan the Seller Playbook below before debrief — you'll talk to it.
 
 ---
+
+## No-App CLI fallback
+
+Use this path only if the facilitator says GitHub App alpha access is unavailable.
+
+1. Create a scratch repo locally:
+
+   ```bash
+   mkdir my-game
+   cd my-game
+   git init
+   copilot --yolo
+   ```
+
+2. Paste the Step 3 opening prompt into the Copilot CLI session. The agent should create the game files and serve them with `npx http-server -p 8000 .`.
+3. For Step 4, open `http://localhost:8000` in your regular browser instead of the GitHub App built-in browser.
+4. Continue Steps 5 and 6 in the same CLI session. Keep prompts targeted and let the agent edit the files; don't patch the game by hand.
 
 ## Stretch Goals (take-home)
 

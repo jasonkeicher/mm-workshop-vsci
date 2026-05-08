@@ -4,6 +4,8 @@
 >
 > **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. Everything in this module happens inside a single Copilot session in the GitHub App — the agent edits files, runs the slide tool in the session's built-in terminal, and you preview the deck in the session's built-in browser.
 >
+> **No-App fallback:** If GitHub App alpha access is unavailable, use the **No-App CLI fallback** near the end of this module.
+>
 > By the end of this module you'll have generated a polished, customer-ready slide deck answering a real prospect question — replacing 4–6 hours of manual deck-building with ~30 minutes of prompting.
 
 ---
@@ -97,7 +99,7 @@ Be specific to this customer. No filler. No "thank you" slides.
 
 The agent will write `deck.md`, install Marp inside the session's own private copy of the repo, and build `deck.html`.
 
-> **Heads up:** these commands run in the session's Linux sandbox — not your local PowerShell. The `&&` chaining and `npm`/`npx` calls are the agent's job; you don't need to run them yourself.
+> **Heads up:** these commands run inside the agent's session environment — not your local PowerShell. The `&&` chaining and `npm`/`npx` calls are the agent's job; you don't need to run them yourself.
 
 **What you should see in the Changes panel:** `deck.md` with `---` slide separators, frontmatter at the top setting `marp: true` and `theme: gaia`, and `<!-- speaker notes -->` HTML comments under each slide. Plus `deck.html` once Marp finishes.
 
@@ -162,6 +164,23 @@ The agent runs `git` for you inside the session — **you don't need a local clo
 Scan the Seller Playbook below before debrief — you'll talk to it. Focus on the **Pro+ as wedge** insight and the **"Copilot is for developers" objection handler**.
 
 ---
+
+## No-App CLI fallback
+
+Use this path only if the facilitator says GitHub App alpha access is unavailable.
+
+1. Create a scratch repo locally:
+
+   ```bash
+   mkdir copilot-deck
+   cd copilot-deck
+   git init
+   copilot --yolo
+   ```
+
+2. In the Copilot CLI session, use the same prompts from Steps 3 and 4. The agent should create `notes.md`, create `deck.md`, install Marp locally, and build `deck.html`.
+3. For Step 5, ask the agent to serve the folder with `npx http-server -p 8000 .`, then open `http://localhost:8000/deck.html` in your regular browser instead of the GitHub App built-in browser.
+4. Continue Steps 6 and 7 in the same CLI session. For Step 8, either skip the PR or create a private GitHub repo first, then ask the agent to push a branch and open a PR.
 
 ## Stretch Goals (take-home)
 

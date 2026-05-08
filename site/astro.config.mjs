@@ -15,7 +15,7 @@ export default defineConfig({
     starlight({
       title: 'Mid-Market Seller Copilot Workshop',
       description:
-        'A hands-on, sales-focused workshop with 6 modules tying GitHub Copilot experience to the June 2026 usage-based billing transition.',
+        'A hands-on, sales-focused workshop with 7 modules tying GitHub Copilot experience to the June 2026 usage-based billing transition.',
       expressiveCode: {
         themes: ['github-dark', 'github-light'],
       },
@@ -23,7 +23,7 @@ export default defineConfig({
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/',
+          href: 'https://github.com/jasonkeicher/mm-workshop-vsci',
         },
       ],
       sidebar: [
@@ -38,10 +38,14 @@ export default defineConfig({
             { label: '2 · Prompt to PR', slug: 'modules/02-prompt-to-pr' },
             { label: '3 · Slide Deck Maker', slug: 'modules/03-slide-deck-maker' },
             { label: '4 · Vibe-Code a Game', slug: 'modules/04-vibe-code-game' },
-            // Stage 3 take-home modules (5–7) are hidden from the sidebar but still build at their URLs.
-            // { label: '5 · Chief of Staff (take-home)', slug: 'modules/05-chief-of-staff' },
-            // { label: '6 · LLM-Assist (take-home)', slug: 'modules/06-llm-assist' },
-            // { label: '7 · Copilot CLI (take-home)', slug: 'modules/07-copilot-cli' },
+          ],
+        },
+        {
+          label: 'Take-home self-study',
+          items: [
+            { label: '5 · Chief of Staff', slug: 'modules/05-chief-of-staff' },
+            { label: '6 · LLM-Assist', slug: 'modules/06-llm-assist' },
+            { label: '7 · Copilot CLI', slug: 'modules/07-copilot-cli' },
           ],
         },
       ],

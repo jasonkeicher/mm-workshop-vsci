@@ -25,9 +25,9 @@ Experience the **agentic SDLC** end-to-end. After this module, you can:
 
 ### Step 1 — Add the demo repo and kick off the agent (5 min)
 
-In the GitHub App, find the **+ Add repository** control (near the repo selector at the top). Search for `demo_octocat_supply` and add it.
+In the GitHub App, find the **+ Add repository** control (near the repo selector at the top). Search for the facilitator-confirmed full repo path for `demo_octocat_supply` (for example, `<owner>/demo_octocat_supply`) and add it. Do not rely on the bare repo name if search results are noisy.
 
-> **Heads-up:** `demo_octocat_supply` requires the same alpha access as the GitHub App itself. If you can search and add it, you're good. If it doesn't show up, flag the facilitator — see Troubleshooting for the fallback.
+> **Heads-up:** the demo repo requires the same alpha access as the GitHub App itself, plus repo access. If the full path doesn't show up, flag the facilitator — see Troubleshooting for the fallback.
 
 **Immediately** start a new Copilot session in the repo with this prompt (don't tour while it runs — let the agent work):
 
@@ -89,8 +89,8 @@ When the PR opens:
 
 - Read the **PR description** — it's not "Added files," it's a meaningful summary.
 - Watch the automated **CI/CD checks** kick off (CI = the test/build pipeline that runs on every PR).
-- **Copilot Code Review** posts inline comments on the diff — read at least 3.
-- Click **"Fix unresolved comments"** (or whatever the equivalent button is labeled) — the agent addresses all the Copilot Code Review feedback in one go.
+- **Copilot Code Review** may post inline comments on the diff. If it does, read up to 3. If it posts no comments, read the summary/check results and continue.
+- If comments exist, click **"Fix unresolved comments"** (or whatever the equivalent button is labeled) so the agent addresses the feedback. If the button is missing, ask the agent: *"Address the unresolved Copilot Code Review feedback on this PR."*
 
 > UI labels may shift in alpha — if you can't find an exact button, look for one near the comments that says something like "Fix" or "Address."
 
@@ -165,9 +165,9 @@ On the PR page, look for an **"Agent Merge"** button (label may vary in alpha). 
 | Symptom | Fix |
 |---|---|
 | Agent fails to spin up | Check `copilot --version` works in terminal; restart the GitHub App |
-| `demo_octocat_supply` not findable | Confirm alpha access (same as the GitHub App itself); ask the facilitator. **Fallback:** any small public repo of your own — prompt for a small feature instead of the Cart Page. |
+| `demo_octocat_supply` not findable | Confirm the full `owner/repo` path and repo access with the facilitator. **Fallback:** any small public repo of your own — prompt for a small feature instead of the Cart Page. |
 | Built-in browser tab missing | Settings → Experimental Flags → enable *Browser tabs* (covered in Module 1) |
-| Fleet mode session fails to start | Known alpha flake. Re-trigger; or fall back to Autopilot (Autopilot = the sequential, single-agent mode — same flow, one agent at a time) |
+| Fleet mode session fails to start | Known alpha flake. Re-trigger; or fall back to single-agent mode (sequential execution, one agent at a time). |
 | `npm run dev` (or `make dev`) fails | Open built-in terminal: `npm install` then `npm run dev` again; check Node version (`node -v` should be 18+) |
 | Agent Merge button missing | Settings → Experimental Flags → enable *Agent tools* (covered in Module 1) |
 

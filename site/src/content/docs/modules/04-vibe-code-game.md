@@ -42,7 +42,7 @@ Pick something **you actually want to play**. Motivation matters.
 
 In the GitHub App, click the **+ Add repository** control (near the repo selector at the top). You have two easy options:
 
-- **Easiest:** create a brand-new empty repo named `my-game` on github.com first (`gh repo create my-game --private --confirm` or via the github.com UI), then add it from the App.
+- **Easiest:** create a brand-new empty repo named `my-game` on github.com (use the **New repository** button in the github.com UI — takes 30 seconds), then add it from the App.
 - **Or:** point at any small empty repo of your own.
 
 Open the repo in the App and start a fresh Copilot session. For the model, pick any **Claude Sonnet** — the default is fine. For mode, choose **Agent** (multi-step).
@@ -57,7 +57,7 @@ Build me a browser-based <Snake> game.
 Tech stack:
 - Vanilla HTML, CSS, JavaScript only — no frameworks
 - Single index.html file or a small structure with index.html + game.js + style.css
-- Runs locally just by opening index.html
+- Designed to be served by a local static server (we'll use http-server below)
 
 Gameplay:
 - <list 3-5 specific gameplay rules: scoring, controls, win/lose, etc.>
@@ -72,11 +72,13 @@ http://localhost:8000 with: npx http-server -p 8000 .
 Keep the server running in the background and tell me what to test.
 ```
 
+> **First-run note:** `npx http-server` downloads the package the first time — expect ~10 seconds of silence before it's ready. Wait for the agent to confirm the server is running before opening the browser tab.
+
 ### Step 4 — Watch the agent build, then play it in the App (8 min)
 
 Don't interrupt. Watch:
 
-- File creation (`index.html`, `game.js`, `style.css`) in the **Changes** panel.
+- File creation (`index.html`, `game.js`, `style.css`) in the **Changes** panel on the right side of the session.
 - The agent's reasoning about edge cases.
 - When it stops and asks vs. when it just decides.
 
@@ -98,7 +100,9 @@ Each prompt = a session turn. The dev server keeps running — just refresh the 
 
 ### Step 6 — Polish (12 min)
 
-Now go beyond functional. Push the agent on:
+Now go beyond functional. **Don't fix anything by hand** — keep prompting in the same session, and refresh the built-in browser after each change. **Cap yourself at 3–4 polish prompts** so you finish on time; you can keep iterating after the workshop.
+
+Push the agent on:
 
 - **Sound effects** (Web Audio API).
 - **Visual polish**: animations, particle effects on score, screen shake on collision.
@@ -177,4 +181,4 @@ Scan the Seller Playbook below before debrief — you'll talk to it.
 | Agent rewrites too aggressively | Start the prompt with "Make a *targeted* change. Do not refactor unrelated code." |
 | Game logic is broken in subtle ways | Switch to a stronger model (Opus 4.6); or break the prompt into smaller, more specific instructions |
 | GitHub Pages shows 404 (stretch) | Wait 2–3 min after first enable; ensure `index.html` is in repo root, not a subfolder |
-| Want to start over | Discard the session (it lives in its own worktree — your main checkout is untouched) |
+| Want to start over | Discard the session — it lives in its own private copy of the repo, so your main checkout is untouched |

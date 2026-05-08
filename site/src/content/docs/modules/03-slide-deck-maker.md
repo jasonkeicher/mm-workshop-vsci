@@ -43,6 +43,8 @@ git init
 echo "# Deck working folder" > README.md
 ```
 
+> **What's Marp?** Marp is a tool that turns plain Markdown into slide decks (PDF or HTML). We use it because Copilot writes Markdown natively — so the agent can produce a real deck, not just an outline.
+
 If Marp isn't installed:
 
 ```bash
@@ -51,7 +53,11 @@ npm install -g @marp-team/marp-cli
 
 ### Step 3 — Write your `notes.md` ground truth (7 min)
 
-You won't create a real Copilot Space in this module (that's a stretch goal), but you'll prompt as if you have one. Open `notes.md` and paste in the **inputs your prompt will reference**:
+You won't create a real Copilot Space in this module (that's a stretch goal), but you'll prompt as if you have one.
+
+> **What's a Copilot Space?** A curated bundle of files and links you can attach to prompts so the agent always grounds its answers in your source material — a reusable knowledge base. Today we'll fake it with a single `notes.md` file.
+
+Open `notes.md` and paste in the **inputs your prompt will reference**:
 
 - Your scenario (from Step 1).
 - Audience: who's in the room? Title, technical depth, decision power.
@@ -61,13 +67,17 @@ You won't create a real Copilot Space in this module (that's a stretch goal), bu
 
 Save it. This is your "ground truth" file the agent will read.
 
-### Step 4 — First-pass deck generation (10 min)
+### Step 4 — First-pass deck generation (8 min)
 
 Start a Copilot CLI session:
 
 ```bash
-copilot --yolo --disable-mcp-server github
+copilot --yolo
 ```
+
+> **What's `--yolo`?** It tells Copilot CLI to run shell commands and edit files without asking for approval each time. **Safe here** because you're in an empty folder you just created. **Don't use it inside a real repo or anywhere with files you care about.**
+>
+> If `--yolo` isn't recognized by your CLI version, just run `copilot` and approve each action when prompted — same outcome, more clicks.
 
 Use this prompt (adapt the bracketed bits):
 
@@ -92,24 +102,32 @@ Be specific to this customer. No filler. No "thank you" slides.
 
 The agent will read `notes.md`, ask any clarifying questions, then write `deck.md`.
 
-### Step 5 — Preview in Marp (5 min)
+**What you should see:** a `deck.md` file with `---` slide separators, frontmatter at the top setting `marp: true` and `theme: gaia`, and `<!-- speaker notes -->` HTML comments under each slide.
+
+### Step 5 — Preview the deck (5 min)
+
+In a **separate** terminal (leave Copilot running in the first one):
 
 ```bash
-marp --preview deck.md
+marp -w deck.md --html
 ```
 
-Marp opens a live preview. Browse all slides. Note 3 things you'd change.
+This writes `deck.html` and watches for changes. Open `deck.html` in your browser — it'll auto-refresh whenever you re-prompt the deck. (We use `--html` + manual open instead of `--preview` because the live-preview server doesn't work on every laptop / corporate network.)
+
+Browse all slides. Note 3 things you'd change.
 
 ### Step 6 — Iterate on tone, structure, and visuals (10 min)
 
-In the same Copilot CLI session, use focused prompts. **Don't ask for everything at once** — small surgical edits. **Aim for 3–4 surgical passes**, not perfection.
+In the same Copilot CLI session, use focused prompts. **Don't ask for everything at once** — small surgical edits.
+
+> **Hard guardrail: cap yourself at 3–4 surgical passes.** Perfect is the enemy of done; you can keep iterating after the workshop.
 
 - *"Slide 3's headline is generic. Rewrite it to lead with the customer's pain, not the product."*
 - *"Add a slide between 5 and 6 with a concrete cost example: a 200-dev team running 50% agentic, 50% chat for one month."*
 - *"The speaker notes on slide 8 are too long. Tighten to 30 seconds, no jargon."*
 - *"Restructure the deck so the CTA appears at slide 7, not the end. Move the pricing detail to an appendix section."*
 
-Each prompt = a session turn. Re-run `marp --preview` after each round.
+Each prompt = a session turn. Your `marp -w` watcher from Step 5 auto-rebuilds `deck.html` — just refresh the browser.
 
 ### Step 7 — Export and review (8 min)
 
@@ -118,7 +136,9 @@ marp deck.md --pdf
 marp deck.md --html
 ```
 
-Open the PDF. Read it as if you're the customer. Mark every slide that is:
+> **PDF export needs Chrome installed locally** (Marp uses it under the hood). If `--pdf` fails, the `--html` output is just as customer-shareable — attach the file or host it.
+
+Open the PDF (or HTML). Read it as if you're the customer. Mark every slide that is:
 
 - ❌ Generic (could apply to any customer)
 - ❌ Wrong (factually inaccurate or outdated)
@@ -135,9 +155,11 @@ git commit -m "Customer deck: <scenario>"
 
 Optional: push to a private repo so you can pull it up on any device for the next customer call.
 
-### Step 9 — Read the Seller Playbook (3 min)
+> **If you're behind on time, skip this step** — it's optional. Step 9 (Seller Playbook) matters more for the debrief.
 
-Scan the Seller Playbook below before debrief — you'll talk to it.
+### Step 9 — Read the Seller Playbook (4 min)
+
+Scan the Seller Playbook below before debrief — you'll talk to it. Focus on the **Pro+ as wedge** insight and the **"Copilot is for developers" objection handler**.
 
 ---
 
@@ -160,7 +182,7 @@ Scan the Seller Playbook below before debrief — you'll talk to it.
 
 ### Premium Requests today
 
-- Each prompt = roughly 1 PRU on a base model, 5–10 PRUs on Claude Opus. A full deck cycle = 20–40 PRUs.
+- Each prompt = roughly 1 Premium Request Unit (PRU) on a base model, 5–10 PRUs on Claude Opus. A full deck cycle = 20–40 PRUs.
 - Annual Pro+ users stay on this through expiration; multipliers increase June 1.
 
 ### AI Credits after June 1

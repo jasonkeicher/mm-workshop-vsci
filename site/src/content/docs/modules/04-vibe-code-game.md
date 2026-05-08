@@ -3,9 +3,9 @@ title: "Module 4 · Vibe-Code a Game"
 description: "Build a working browser game in under an hour with no manual code."
 ---
 
-> **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** GitHub App (default; Copilot CLI or VS Code Agent mode also work)
+> **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** GitHub App (alpha)
 >
-> **Prereq:** [Module 1 · GitHub App Setup](../01-github-app-setup/) complete.
+> **Prereq:** [Module 1 · GitHub App Setup](../01-github-app-setup/) complete. Everything in this module happens inside a single Copilot session in the GitHub App — the agent writes the code, runs the dev server in the session's built-in terminal, and you play the game in the session's built-in browser.
 >
 > By the end of this module you'll have built a working browser game from scratch, with zero manual code, in under an hour — and you'll have a take-home path to ship it to the world via GitHub Pages.
 
@@ -38,19 +38,18 @@ Choose **one**. **If you don't have a strong preference, default to Snake or Bre
 
 Pick something **you actually want to play**. Motivation matters.
 
-### Step 2 — Set up your project (3 min)
+### Step 2 — Add a working repo and start a session (3 min)
 
-```bash
-mkdir my-game && cd my-game
-git init
-echo "# My Copilot-built game" > README.md
-```
+In the GitHub App, click the **+ Add repository** control (near the repo selector at the top). You have two easy options:
 
-In the **GitHub App**, add this folder as a repository (if local) or open a quick repo from the app's repo selector. (Copilot CLI / VS Code work too — use whatever you set up in Module 1.)
+- **Easiest:** create a brand-new empty repo named `my-game` on github.com first (`gh repo create my-game --private --confirm` or via the github.com UI), then add it from the App.
+- **Or:** point at any small empty repo of your own.
+
+Open the repo in the App and start a fresh Copilot session. For the model, pick any **Claude Sonnet** — the default is fine. For mode, choose **Agent** (multi-step).
 
 ### Step 3 — The opening prompt (4 min)
 
-Use this template — adapt the bracketed bits:
+In your Copilot session, paste this prompt — adapt the bracketed bits:
 
 ```text
 Build me a browser-based <Snake> game.
@@ -68,30 +67,26 @@ UX:
 - Score visible at top; game-over overlay with restart button
 - Mobile-friendly: touch controls if you can; otherwise arrow keys
 
-Make it work end to end. Then run it and tell me what to test.
+Make it work end to end. Then, in the session terminal, serve it on
+http://localhost:8000 with: npx http-server -p 8000 .
+Keep the server running in the background and tell me what to test.
 ```
 
-Pick **Claude Sonnet 4.6** or better as the model. **Agent mode**.
-
-### Step 4 — Watch the agent build (8 min)
+### Step 4 — Watch the agent build, then play it in the App (8 min)
 
 Don't interrupt. Watch:
 
-- File creation (`index.html`, `game.js`, `style.css`).
+- File creation (`index.html`, `game.js`, `style.css`) in the **Changes** panel.
 - The agent's reasoning about edge cases.
 - When it stops and asks vs. when it just decides.
 
-If your surface has a built-in browser (GitHub App), open it. Otherwise, open `index.html` in your local browser:
+Once the agent reports the dev server is running, open the **built-in browser** tab (experimental flag from Module 1) and navigate to `http://localhost:8000`. Play the game.
 
-```bash
-# In a new terminal
-python3 -m http.server 8000
-# Open http://localhost:8000
-```
+> If the built-in browser tab is missing, enable it via Settings → Experimental Flags → *Browser tabs* (covered in Module 1).
 
 ### Step 5 — Test and iterate (18 min)
 
-Play the game. Find at least 5 things wrong or missing. **Don't fix them yourself.** Use prompts:
+Play the game in the built-in browser. Find at least 5 things wrong or missing. **Don't fix them yourself.** Use prompts in the same session:
 
 - *"The snake doesn't die when it runs into the wall. Fix that."*
 - *"Add a high-score that persists in localStorage."*
@@ -99,7 +94,7 @@ Play the game. Find at least 5 things wrong or missing. **Don't fix them yoursel
 - *"On mobile the controls don't work — add swipe gestures."*
 - *"Game over screen is ugly. Center it, add a fade-in animation, make the restart button bigger."*
 
-Each prompt = a session turn. Re-test after each.
+Each prompt = a session turn. The dev server keeps running — just refresh the built-in browser tab after each fix.
 
 ### Step 6 — Polish (12 min)
 
@@ -119,11 +114,11 @@ Scan the Seller Playbook below before debrief — you'll talk to it.
 
 ## Stretch Goals (take-home)
 
-- **Ship it to GitHub Pages**: `gh repo create my-game --public --source=. --push`, then enable Pages (Settings → Pages → Source: `main` branch / root). In ~2 min your game is live at `https://<username>.github.io/my-game/`.
-
+- **Ship it to GitHub Pages**: ask the agent to commit the game and open a PR; merge it on github.com; then enable Pages (Settings → Pages → Source: `main` branch / root). In ~2 min your game is live at `https://<username>.github.io/my-game/`.
 - Add a **two-player mode** or **AI opponent** (great for chess, Connect Four, Tic-Tac-Toe).
 - Convert to a **PWA** (installable on phone home screen).
 - Build a **leaderboard** using a free serverless backend (e.g., GitHub Gists API as a hack, or Cloudflare Workers).
+- Try the same prompt in the **Copilot CLI** (`copilot --yolo` in a local folder) and compare the experience to running it in the GitHub App.
 - Pick a totally different game and start over with what you learned.
 
 ---
@@ -175,9 +170,11 @@ Scan the Seller Playbook below before debrief — you'll talk to it.
 
 | Symptom | Fix |
 |---|---|
-| Game doesn't render | Open browser dev tools (F12); look at the Console; paste any error back to the agent and ask it to fix |
+| Can't add a new repo from the App | Confirm GitHub App alpha access (covered in Module 1); try refreshing the repo picker |
+| Built-in browser tab missing | Settings → Experimental Flags → enable *Browser tabs* (covered in Module 1) |
+| `npx http-server` fails in session terminal | Check Node version (`node -v` should be 18+); ask the agent to retry, or fall back to `python3 -m http.server 8000` |
+| Game doesn't render | Open the built-in browser's dev tools (right-click → Inspect); paste any console error back to the agent and ask it to fix |
 | Agent rewrites too aggressively | Start the prompt with "Make a *targeted* change. Do not refactor unrelated code." |
 | Game logic is broken in subtle ways | Switch to a stronger model (Opus 4.6); or break the prompt into smaller, more specific instructions |
-| `gh repo create` fails | Check `gh auth status`; try `gh auth refresh -s repo` |
-| GitHub Pages shows 404 | Wait 2–3 min after first enable; ensure `index.html` is in repo root, not a subfolder |
-| Want to start over | `rm -rf` the folder; you've lost nothing |
+| GitHub Pages shows 404 (stretch) | Wait 2–3 min after first enable; ensure `index.html` is in repo root, not a subfolder |
+| Want to start over | Discard the session (it lives in its own worktree — your main checkout is untouched) |

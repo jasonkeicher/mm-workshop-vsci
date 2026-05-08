@@ -1,8 +1,8 @@
 # Module 3 · Slide Deck Maker for Customer Conversations
 
-> **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** Copilot CLI (primary) or GitHub App / VS Code (alternative)
+> **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** GitHub App (alpha)
 >
-> **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. (Module 1 verified `copilot --version`; this module mostly stays in the CLI.)
+> **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. Everything in this module happens inside a single Copilot session in the GitHub App — the agent edits files, runs the slide tool in the session's built-in terminal, and you preview the deck in the session's built-in browser.
 >
 > By the end of this module you'll have generated a polished, customer-ready slide deck answering a real prospect question — replacing 4–6 hours of manual deck-building with ~30 minutes of prompting.
 
@@ -32,56 +32,49 @@ Choose **one** customer scenario. **If you don't have a real one in mind, defaul
 
 Write your scenario down. The whole module is grounded in this single brief.
 
-### Step 2 — Set up a working folder (3 min)
+### Step 2 — Add a working repo and start a session (3 min)
 
-```bash
-mkdir copilot-deck && cd copilot-deck
-git init
-echo "# Deck working folder" > README.md
-```
+In the GitHub App, click the **+ Add repository** control (near the repo selector at the top). You have two easy options:
 
-> **What's Marp?** Marp is a tool that turns plain Markdown into slide decks (PDF or HTML). We use it because Copilot writes Markdown natively — so the agent can produce a real deck, not just an outline.
+- **Easiest:** create a brand-new empty repo named `copilot-deck` on github.com first (`gh repo create copilot-deck --private --confirm` or via the github.com UI), then add it from the App.
+- **Or:** point at any small empty repo of your own.
 
-If Marp isn't installed:
+Open the repo in the App and start a fresh Copilot session. For the model, pick any **Claude Sonnet** — the default is fine. For mode, choose **Agent**.
 
-```bash
-npm install -g @marp-team/marp-cli
-```
+> **What's Marp?** Marp is a tool that turns plain Markdown into slide decks (PDF or HTML). We use it because Copilot writes Markdown natively — so the agent can produce a real deck, not just an outline. **You don't have to install Marp yourself** — the agent will install it inside the session's sandboxed worktree in Step 4.
 
-### Step 3 — Write your `notes.md` ground truth (7 min)
+### Step 3 — Have the agent create your `notes.md` ground truth (7 min)
 
 You won't create a real Copilot Space in this module (that's a stretch goal), but you'll prompt as if you have one.
 
-> **What's a Copilot Space?** A curated bundle of files and links you can attach to prompts so the agent always grounds its answers in your source material — a reusable knowledge base. Today we'll fake it with a single `notes.md` file.
+> **What's a Copilot Space?** A curated bundle of files and links you can attach to prompts so the agent always grounds its answers in your source material — a reusable knowledge base. Today we'll fake it with a single `notes.md` file the agent writes for you.
 
-Open `notes.md` and paste in the **inputs your prompt will reference**:
+In your Copilot session, paste this prompt (fill in the bracketed bits with your scenario from Step 1):
 
-- Your scenario (from Step 1).
-- Audience: who's in the room? Title, technical depth, decision power.
-- Customer constraints you know: industry, size, current GitHub footprint, competitive lock-in.
-- 3–5 URLs of public GitHub Copilot collateral you'll cite (e.g., the [usage-based billing blog](https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/), [GitHub Copilot product page](https://github.com/features/copilot)).
-- Your call-to-action — what do you want the customer to *do* after the deck?
+```text
+Create a file called notes.md in this repo. Put my customer brief in it,
+structured with these sections:
 
-Save it. This is your "ground truth" file the agent will read.
+- Scenario: <paste your scenario from Step 1>
+- Audience: <who's in the room — title, technical depth, decision power>
+- Customer constraints: <industry, size, current GitHub footprint, competitive lock-in>
+- Reference material (URLs to cite):
+  - https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/
+  - https://github.com/features/copilot
+  - <add 1-3 more relevant public GitHub Copilot URLs>
+- Call to action: <what do you want the customer to DO after the deck>
+
+Do not start writing the deck yet. Just create notes.md and confirm.
+```
+
+The agent will create the file. Inspect it in the session's **Changes** panel — this is the ground-truth file the next prompt will reference.
 
 ### Step 4 — First-pass deck generation (8 min)
 
-Start a Copilot CLI session:
-
-```bash
-copilot --yolo
-```
-
-> **What's `--yolo`?** It tells Copilot CLI to run shell commands and edit files without asking for approval each time. **Safe here** because you're in an empty folder you just created. **Don't use it inside a real repo or anywhere with files you care about.**
->
-> If `--yolo` isn't recognized by your CLI version, just run `copilot` and approve each action when prompted — same outcome, more clicks.
-
-Use this prompt (adapt the bracketed bits):
+In the same Copilot session, send this prompt (adapt the bracketed bits):
 
 ```text
-You are a senior GitHub solutions consultant building a customer-facing slide
-deck. Read notes.md in this folder for the scenario, audience, constraints,
-and CTA.
+Read notes.md in this repo for the scenario, audience, constraints, and CTA.
 
 Produce a Marp-flavored markdown deck named deck.md with these properties:
 - Title slide (customer-facing, includes today's date)
@@ -94,48 +87,55 @@ Produce a Marp-flavored markdown deck named deck.md with these properties:
 - A closing CTA slide with 2-3 specific next steps
 - Use Marp's "gaia" theme; consistent visual rhythm
 
+Then, in the session terminal:
+1. Initialize npm if needed and install Marp locally to this repo:
+   npm init -y && npm install --save-dev @marp-team/marp-cli
+2. Build deck.html: npx marp deck.md --html
+
 Be specific to this customer. No filler. No "thank you" slides.
 ```
 
-The agent will read `notes.md`, ask any clarifying questions, then write `deck.md`.
+The agent will write `deck.md`, install Marp inside the session's sandboxed worktree, and build `deck.html`.
 
-**What you should see:** a `deck.md` file with `---` slide separators, frontmatter at the top setting `marp: true` and `theme: gaia`, and `<!-- speaker notes -->` HTML comments under each slide.
+**What you should see in the Changes panel:** `deck.md` with `---` slide separators, frontmatter at the top setting `marp: true` and `theme: gaia`, and `<!-- speaker notes -->` HTML comments under each slide. Plus `deck.html` once Marp finishes.
 
-### Step 5 — Preview the deck (5 min)
+### Step 5 — Preview the deck in the GitHub App (5 min)
 
-In a **separate** terminal (leave Copilot running in the first one):
+In the same session, ask the agent to serve the deck so you can view it inside the App:
 
-```bash
-marp -w deck.md --html
+```text
+Serve deck.html on http://localhost:8000 with a simple static server
+(npx http-server -p 8000 . is fine). Keep it running in the background.
 ```
 
-This writes `deck.html` and watches for changes. Open `deck.html` in your browser — it'll auto-refresh whenever you re-prompt the deck. (We use `--html` + manual open instead of `--preview` because the live-preview server doesn't work on every laptop / corporate network.)
+Open the **built-in browser** tab (experimental flag from Module 1) and navigate to `http://localhost:8000/deck.html`. Browse all slides. Note 3 things you'd change.
 
-Browse all slides. Note 3 things you'd change.
+> If the built-in browser tab is missing, enable it via Settings → Experimental Flags → *Browser tabs* (covered in Module 1).
 
 ### Step 6 — Iterate on tone, structure, and visuals (10 min)
 
-In the same Copilot CLI session, use focused prompts. **Don't ask for everything at once** — small surgical edits.
+In the same Copilot session, use focused prompts. **Don't ask for everything at once** — small surgical edits.
 
 > **Hard guardrail: cap yourself at 3–4 surgical passes.** Perfect is the enemy of done; you can keep iterating after the workshop.
 
-- *"Slide 3's headline is generic. Rewrite it to lead with the customer's pain, not the product."*
-- *"Add a slide between 5 and 6 with a concrete cost example: a 200-dev team running 50% agentic, 50% chat for one month."*
-- *"The speaker notes on slide 8 are too long. Tighten to 30 seconds, no jargon."*
-- *"Restructure the deck so the CTA appears at slide 7, not the end. Move the pricing detail to an appendix section."*
+- *"Slide 3's headline is generic. Rewrite it to lead with the customer's pain, not the product. Then rebuild deck.html."*
+- *"Add a slide between 5 and 6 with a concrete cost example: a 200-dev team running 50% agentic, 50% chat for one month. Rebuild deck.html."*
+- *"The speaker notes on slide 8 are too long. Tighten to 30 seconds, no jargon. Rebuild deck.html."*
+- *"Restructure the deck so the CTA appears at slide 7, not the end. Move the pricing detail to an appendix section. Rebuild deck.html."*
 
-Each prompt = a session turn. Your `marp -w` watcher from Step 5 auto-rebuilds `deck.html` — just refresh the browser.
+Each prompt = a session turn. Refresh the built-in browser tab after each rebuild.
 
 ### Step 7 — Export and review (8 min)
 
-```bash
-marp deck.md --pdf
-marp deck.md --html
+Ask the agent to produce the final outputs:
+
+```text
+Build deck.html and (if possible) deck.pdf as final exports.
 ```
 
-> **PDF export needs Chrome installed locally** (Marp uses it under the hood). If `--pdf` fails, the `--html` output is just as customer-shareable — attach the file or host it.
+> **PDF export needs Chrome available in the session sandbox** (Marp uses it under the hood). If `--pdf` fails, the `--html` output is just as customer-shareable — attach the file or host it.
 
-Open the PDF (or HTML). Read it as if you're the customer. Mark every slide that is:
+Open the PDF (or HTML) in the built-in browser. Read it as if you're the customer. Mark every slide that is:
 
 - ❌ Generic (could apply to any customer)
 - ❌ Wrong (factually inaccurate or outdated)
@@ -143,14 +143,11 @@ Open the PDF (or HTML). Read it as if you're the customer. Mark every slide that
 
 For each red flag, do one more prompt-edit pass.
 
-### Step 8 — Commit your work (2 min)
+### Step 8 — Commit and PR your work (2 min)
 
-```bash
-git add .
-git commit -m "Customer deck: <scenario>"
-```
+Ask the agent: *"Commit notes.md, deck.md, and deck.html with a descriptive message, then open a pull request."*
 
-Optional: push to a private repo so you can pull it up on any device for the next customer call.
+The agent will create a PR in the App, just like in Module 2. (You don't have to merge it — the PR itself is your portable artifact you can pull up on any device.)
 
 > **If you're behind on time, skip this step** — it's optional. Step 9 (Seller Playbook) matters more for the debrief.
 
@@ -164,7 +161,7 @@ Scan the Seller Playbook below before debrief — you'll talk to it. Focus on th
 
 - Create an actual **Copilot Space** at <https://github.com/copilot/spaces> with curated GitHub Copilot collateral; regenerate the deck referencing the Space directly.
 - Build the same deck for a different vertical (FinServ → Healthcare → Manufacturing) by changing only `notes.md`. Time how long the second pass takes.
-- Try the same workflow in the **GitHub App** (Chat panel) and compare the experience.
+- Try the same workflow in the **Copilot CLI** (`copilot --yolo` in a local folder) and compare the experience to running it in the GitHub App.
 - Generate a **2-page customer-facing handout** version of the deck using the same notes.
 
 ---
@@ -215,8 +212,10 @@ Scan the Seller Playbook below before debrief — you'll talk to it. Focus on th
 
 | Symptom | Fix |
 |---|---|
-| `copilot` command not found | Install per [Copilot CLI docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) |
-| Marp render breaks | Check frontmatter: `--- marp: true theme: gaia ---` at top of `deck.md` |
+| Can't add a new repo from the App | Confirm GitHub App alpha access (covered in Module 1); try refreshing the repo picker |
+| Built-in browser tab missing | Settings → Experimental Flags → enable *Browser tabs* (covered in Module 1) |
+| Marp install fails in session terminal | Check Node version (`node -v` should be 18+); retry the install command |
+| Marp render breaks | Check frontmatter: `marp: true` and `theme: gaia` in `deck.md` frontmatter |
 | Speaker notes don't show | Marp comment syntax: `<!-- speaker notes here -->` (must be HTML comment, not Markdown) |
 | Agent rewrites too much | Be more surgical: name the slide and the change. "On slide 5, replace headline only." |
-| PDF export blank | Update Marp CLI: `npm update -g @marp-team/marp-cli`. Try `marp deck.md --pdf --allow-local-files`. |
+| PDF export fails | Session sandbox may be missing Chrome. Stick with `--html` output, or ask the agent to retry with `npx marp deck.md --pdf --allow-local-files`. |

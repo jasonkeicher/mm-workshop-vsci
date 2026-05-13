@@ -1,0 +1,28 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default><slot /></Default>
+
+<div class="facilitator-footer">
+  <a href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/facilitator-guide/'}>
+    Facilitator Guide →
+  </a>
+</div>
+
+<style>
+  .facilitator-footer {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--sl-color-hairline);
+    text-align: center;
+    font-size: var(--sl-text-sm);
+  }
+  .facilitator-footer a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+  }
+  .facilitator-footer a:hover {
+    text-decoration: underline;
+  }
+</style>

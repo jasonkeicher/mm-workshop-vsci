@@ -16,6 +16,9 @@ export default defineConfig({
       title: 'Mid-Market Seller Copilot Workshop',
       description:
         'A hands-on, sales-focused workshop with 7 modules tying GitHub Copilot experience to the June 2026 usage-based billing transition.',
+      components: {
+        Footer: './src/components/Footer.astro',
+      },
       expressiveCode: {
         themes: ['github-dark', 'github-light'],
       },
@@ -48,7 +51,6 @@ export default defineConfig({
             { label: '7 · Copilot CLI', slug: 'modules/07-copilot-cli' },
           ],
         },
-        { label: 'Facilitator Guide', slug: 'facilitator-guide' },
       ],
     }),
   ],

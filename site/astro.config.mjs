@@ -30,7 +30,6 @@ export default defineConfig({
         { label: 'Overview', slug: '' },
         { label: 'Prerequisites', slug: 'prerequisites' },
         { label: 'Seller Playbook Overview', slug: 'seller-playbook-overview' },
-        { label: 'Facilitator Guide', slug: 'facilitator-guide' },
         {
           label: 'Live modules',
           items: [
@@ -40,6 +39,7 @@ export default defineConfig({
         },
         {
           label: 'Take-home self-study',
+          collapsed: true,
           items: [
             { label: '3 · Prompt to PR', slug: 'modules/03-prompt-to-pr' },
             { label: '4 · Vibe-Code a Game', slug: 'modules/04-vibe-code-game' },
@@ -48,6 +48,7 @@ export default defineConfig({
             { label: '7 · Copilot CLI', slug: 'modules/07-copilot-cli' },
           ],
         },
+        { label: 'Facilitator Guide', slug: 'facilitator-guide' },
       ],
     }),
   ],

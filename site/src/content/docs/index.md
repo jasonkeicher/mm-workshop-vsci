@@ -23,7 +23,7 @@ Everyone runs the same module. You'll pick one of four **deck types** when you g
 
 | # | Module | What you'll build |
 |---|---|---|
-| 3 | [Slide Deck Maker](modules/03-slide-deck-maker/) | Generate a customer-ready deck — pick from Customer Q&A, GitHub Docs summary, EBC deep-dive, or Pricing transition |
+| 2 | [Slide Deck Maker](modules/02-slide-deck-maker/) | Generate a customer-ready deck — pick from Customer Q&A, GitHub Docs summary, EBC deep-dive, or Pricing transition |
 
 ## Stage 3 · Take-Home Self-Study
 
@@ -31,7 +31,7 @@ Same depth, same playbook framing. Run on your own time after the workshop.
 
 | # | Module | What you'll do | Best fit if… |
 |---|---|---|---|
-| 2 | [Prompt to PR (Cart Page → Agent Merge)](modules/02-prompt-to-pr/) | Idea → working PR with Copilot Code Review and Agent Merge | You want the full agentic SDLC |
+| 3 | [Prompt to PR (Cart Page → Agent Merge)](modules/03-prompt-to-pr/) | Idea → working PR with Copilot Code Review and Agent Merge | You want the full agentic SDLC |
 | 4 | [Vibe-Code a Game](modules/04-vibe-code-game/) | Build a working browser game end-to-end with no manual code | You want the "I built this in an hour" story |
 | 5 | [Chief of Staff (Work-IQ)](modules/05-chief-of-staff/) | Connect Copilot to your M365, generate a weekly summary + meeting brief | You want a personal-productivity story |
 | 6 | [LLM-Assist · Account Research](modules/06-llm-assist/) | Spin up a Codespace, research a real account, produce a QBR / account plan | You want a grounded-in-data narrative |
@@ -43,7 +43,7 @@ Same depth, same playbook framing. Run on your own time after the workshop.
 
 - [ ] Read **[prerequisites.md](prerequisites/)** and complete the install/auth checklist on your laptop (Windows or Mac — both are covered).
 - [ ] Skim **[seller-playbook-overview.md](seller-playbook-overview/)** so the commercial framing is loaded before you start.
-- [ ] (Optional) Decide which **deck type** you'd like to build in Module 3 — you can also pick live.
+- [ ] (Optional) Decide which **deck type** you'd like to build in Module 2 — you can also pick live.
 
 ## During the Workshop (90 min total)
 
@@ -51,7 +51,7 @@ Same depth, same playbook framing. Run on your own time after the workshop.
 |---|---|
 | 5 min | Kickoff |
 | 25 min | **Module 1 · GitHub App Setup** (everyone) |
-| 60 min | **Module 3 · Slide Deck Maker** (everyone — pick your deck type live, debrief embedded at the end) |
+| 60 min | **Module 2 · Slide Deck Maker** (everyone — pick your deck type live, debrief embedded at the end) |
 
 ## After the Workshop
 
@@ -70,7 +70,7 @@ Same depth, same playbook framing. Run on your own time after the workshop.
 
 ## The Commercial Throughline
 
-Module 3 lasers in on the **non-developer / seat-expansion** story: Copilot reaches PMs, sellers, and marketing — same SKU your devs already have. The heavier agentic stories (Cart Page → Agent Merge, vibe-coded games, grounded account research) live in the take-home modules. Every module — live and take-home — ends with a **Seller Playbook** mapping the hands-on activity to:
+Module 2 lasers in on the **non-developer / seat-expansion** story: Copilot reaches PMs, sellers, and marketing — same SKU your devs already have. The heavier agentic stories (Cart Page → Agent Merge, vibe-coded games, grounded account research) live in the take-home modules. Every module — live and take-home — ends with a **Seller Playbook** mapping the hands-on activity to:
 
 - **Agentic vs. chat usage** — why some sessions burn 100× the tokens of others
 - **Premium Requests** (legacy, through annual plan expiration)

@@ -1,13 +1,10 @@
----
-title: "Module 2 · Prompt to PR"
-description: "Take-home self-study: drive a coding agent from prompt to merged PR end-to-end with Copilot Code Review and Agent Merge."
----
+# Module 3 · Prompt to PR (Cart Page → Agent Merge)
 
-> **📚 Take-home self-study module.** Not run live under the current workshop format — the live session focuses on Module 1 (setup) and Module 3 (slide decks). This module is fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../../seller-playbook-overview/).
+> **📚 Take-home self-study module.** Not run live under the current workshop format — the live session focuses on Module 1 (setup) and Module 2 (slide decks). This module is fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../seller-playbook-overview.md).
 >
 > **Time:** ~50 min · **Format:** Solo · **Surface:** GitHub App (alpha)
 >
-> **Prereq:** [Module 1 · GitHub App Setup](../01-github-app-setup/) complete. The app is installed, signed in, and you've run a smoke-test prompt. (Yes — you need the same GitHub App alpha access you set up live in Module 1.)
+> **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. The app is installed, signed in, and you've run a smoke-test prompt. (Yes — you need the same GitHub App alpha access you set up live in Module 1.)
 >
 > By the end of this module you'll have driven a coding agent from a single prompt through implementation, a built-in browser test, a pull request, automated code review, and Agent Merge — without leaving the GitHub App.
 

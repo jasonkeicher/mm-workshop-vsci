@@ -5,7 +5,7 @@ description: "Required live setup module: install the GitHub App, sign in, enabl
 
 > **Time:** 25 min · **Format:** Live setup (everyone) · **Surface:** GitHub App (alpha) on your laptop
 >
-> By the end of this module, **everyone** in the room has the GitHub App installed, signed in, configured, and smoke-tested — ready to dive into Module 3 (Slide Deck Maker) for the next 60 minutes.
+> By the end of this module, **everyone** in the room has the GitHub App installed, signed in, configured, and smoke-tested — ready to dive into Module 2 (Slide Deck Maker) for the next 60 minutes.
 
 ---
 
@@ -57,9 +57,9 @@ You should land on the **Home** screen with an empty repo list.
 
 Go to **Settings → Experimental Flags** and toggle on:
 
-- **Browser tabs** — lets the agent open a built-in web browser inside its session. **You'll use this in Module 3 to preview your slide deck.**
+- **Browser tabs** — lets the agent open a built-in web browser inside its session. **You'll use this in Module 2 to preview your slide deck.**
 - **Research command** — enables `/research` plan mode. Not used in today's live session; safe to leave on for take-home modules.
-- **Agent tools / Fleet mode** — enables parallel agents and Agent Merge. Not used in today's live session; safe to leave on for take-home Module 2.
+- **Agent tools / Fleet mode** — enables parallel agents and Agent Merge. Not used in today's live session; safe to leave on for take-home Module 3.
 
 Restart the app if prompted.
 
@@ -73,7 +73,7 @@ Click through each top-level surface so you know where things live. **Don't go d
 - **Pull Requests** → all open PRs across your repos, like github.com. You can start a Copilot session *from* any PR.
 - **Issues** → start a session directly from an issue (e.g., "Improve test coverage for API") — the issue body becomes the agent's brief.
 - **Chat** (top-level, not repo-scoped) → general-purpose: research, web search, email triage. Not just code.
-- **Workflows** → scheduled or on-demand automated agent runs. (Stretch goal for take-home Module 2; everyone can come back later.)
+- **Workflows** → scheduled or on-demand automated agent runs. (Stretch goal for take-home Module 3; everyone can come back later.)
 
 ### Step 4 — Add a repo and run a smoke-test prompt (5 min)
 
@@ -96,13 +96,13 @@ Your Copilot session ran in a sandboxed folder on your laptop. If you're curious
 - **Windows path looks like:** `%USERPROFILE%\.copilot\sessions\<session-id>\...`
 - **Mac path looks like:** `~/.copilot/sessions/<session-id>/...`
 
-*Why we mention this:* every session gets its own isolated folder, so multiple agents can work on the same repo at once without stepping on each other. **You'll see this matter in Module 3** when the agent creates `notes.md`, installs Marp, and writes `deck.html` — all inside this session's private folder, not your real working directory.
+*Why we mention this:* every session gets its own isolated folder, so multiple agents can work on the same repo at once without stepping on each other. **You'll see this matter in Module 2** when the agent creates `notes.md`, installs Marp, and writes `deck.html` — all inside this session's private folder, not your real working directory.
 
 ---
 
 ## What's Next (next 60 min)
 
-You're set up. The rest of the live session is **[Module 3 · Slide Deck Maker](../03-slide-deck-maker/)** — generate a customer-ready deck end-to-end with Copilot. You'll pick one of four deck types when you get there:
+You're set up. The rest of the live session is **[Module 2 · Slide Deck Maker](../02-slide-deck-maker/)** — generate a customer-ready deck end-to-end with Copilot. You'll pick one of four deck types when you get there:
 
 - **Customer Q&A** — answer a real prospect question.
 - **GitHub Docs summary** — turn a GitHub docs page into slides.
@@ -117,7 +117,7 @@ The other modules (2, 4, 5, 6, 7) are **take-home self-study** — same depth, s
 
 Setup is cheap — a few small chat turns, low token consumption, no AI Credits drama. **But it's the gateway**: every agentic workflow you're about to demo lives behind this one app. When you talk to a customer, the install / sign-in / first-prompt experience you just had is the developer's first 5 minutes too. *That* is what they're buying.
 
-The interesting commercial story starts in Module 3 — agentic vs. chat, AI Credits, pooled budgets, Premium Requests legacy. Hold that thought for the next 60 minutes.
+The interesting commercial story starts in Module 2 — agentic vs. chat, AI Credits, pooled budgets, Premium Requests legacy. Hold that thought for the next 60 minutes.
 
 ---
 

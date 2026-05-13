@@ -3,7 +3,7 @@ title: "Module 4 · Vibe-Code a Game"
 description: "Take-home self-study: build a working browser game in under an hour with no manual code."
 ---
 
-> **📚 Take-home self-study module.** Not run live under the current workshop format — the live session focuses on Module 1 (setup) and Module 3 (slide decks). This module is fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../../seller-playbook-overview/).
+> **📚 Take-home self-study module.** Not run live under the current workshop format — the live session focuses on Module 1 (setup) and Module 2 (slide decks). This module is fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../../seller-playbook-overview/).
 >
 > **Time:** ~50 min · **Format:** Solo · **Surface:** GitHub App (alpha)
 >
@@ -153,7 +153,7 @@ Use this path if GitHub App alpha access is unavailable.
 ### What you just experienced (the agentic lens)
 
 - **Heavily agentic.** Each major prompt = multi-file edits, the agent reading its own previous output, running mental simulations of gameplay. The first build alone is 5–15 minutes of model work.
-- Token consumption: **medium-to-high.** Less than Module 6's research workloads, more than Module 3's deck workflow.
+- Token consumption: **medium-to-high.** Less than Module 6's research workloads, more than Module 2's deck workflow.
 - The narrative power isn't the cost — it's the **wow factor**. A non-engineer building a working game in an hour is the most disarming demo in the GitHub kit.
 
 ### Premium Requests today
@@ -176,7 +176,7 @@ Use this path if GitHub App alpha access is unavailable.
 
 **Objection: "Vibe-coding is cute but not enterprise-grade."**
 
-> "Agreed — your product team isn't shipping vibe-coded code to production. The point of this exercise isn't the game. It's that the **same agentic capabilities** that built a working app in under an hour from a non-coder are the capabilities your engineers use to build a Cart Page in 30 minutes [Module 2] or a customer adoption plan in 15 minutes [Module 6 take-home]. The game is the disarming proof. The enterprise value is the workflow underneath."
+> "Agreed — your product team isn't shipping vibe-coded code to production. The point of this exercise isn't the game. It's that the **same agentic capabilities** that built a working app in under an hour from a non-coder are the capabilities your engineers use to build a Cart Page in 30 minutes [Module 3] or a customer adoption plan in 15 minutes [Module 6 take-home]. The game is the disarming proof. The enterprise value is the workflow underneath."
 
 ### Expansion play
 

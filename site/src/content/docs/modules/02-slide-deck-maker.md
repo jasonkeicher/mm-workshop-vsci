@@ -1,5 +1,5 @@
 ---
-title: "Module 3 · Slide Deck Maker"
+title: "Module 2 · Slide Deck Maker"
 description: "Live deep-dive: generate a customer-ready deck with the GitHub App and Marp — pick from Customer Q&A, GitHub Docs summary, EBC deep-dive, or Pricing transition."
 ---
 

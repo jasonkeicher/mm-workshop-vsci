@@ -1,4 +1,4 @@
-# Module 3 · Slide Deck Maker for Customer Conversations
+# Module 2 · Slide Deck Maker for Customer Conversations
 
 > **Time:** 60 min · **Format:** Live deep-dive (everyone runs this module) · **Surface:** GitHub App (alpha)
 >

@@ -27,11 +27,11 @@ You'll install the same five tools on either OS — just from different sources.
 
 | Tool | Why you need it | Where to get it |
 |---|---|---|
-| **VS Code** (latest) | Editor used in Module 3 if you peek under the hood | Windows: `winget` · Mac: Homebrew cask · or <https://code.visualstudio.com/> |
+| **VS Code** (latest) | Editor used in Module 2 if you peek under the hood | Windows: `winget` · Mac: Homebrew cask · or <https://code.visualstudio.com/> |
 | **GitHub CLI** (`gh`) | Auth + ad-hoc GitHub commands; used by all modules | Windows: `winget` · Mac: Homebrew · or <https://cli.github.com/> |
 | **Copilot CLI** (native `copilot`) | Used by Module 1 verification and as a fallback if the GitHub App is unavailable | Install per the [official docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) (same steps on both OSes). The older `gh copilot` extension is **not enough**. |
-| **GitHub App** (alpha) | **Required for the live workshop** (Module 1 + Module 3) | <https://github.com/github/github-app> — Windows `.exe`, Mac `.dmg` |
-| **Node.js LTS** | Module 3 installs Marp (a slide-builder) using Node | Windows: `winget` · Mac: Homebrew · or <https://nodejs.org/> |
+| **GitHub App** (alpha) | **Required for the live workshop** (Module 1 + Module 2) | <https://github.com/github/github-app> — Windows `.exe`, Mac `.dmg` |
+| **Node.js LTS** | Module 2 installs Marp (a slide-builder) using Node | Windows: `winget` · Mac: Homebrew · or <https://nodejs.org/> |
 | **Git** | All modules | Windows: `winget` · Mac: Homebrew · or <https://git-scm.com/downloads> |
 
 ### Windows quick-install (PowerShell)
@@ -100,7 +100,7 @@ A browser tab will open — sign in, click Authorize, return to the terminal, an
 
 ## 4. VS Code Copilot Setup
 
-You only need this if you want to peek at Module 3's files in VS Code while the GitHub App is running. **Optional** for the live workshop.
+You only need this if you want to peek at Module 2's files in VS Code while the GitHub App is running. **Optional** for the live workshop.
 
 1. Install the **GitHub Copilot** and **GitHub Copilot Chat** extensions from the VS Code Marketplace.
 2. Sign in via the Accounts icon (bottom-left of VS Code) → "Sign in with GitHub to use Copilot".
@@ -113,8 +113,8 @@ You only need this if you want to peek at Module 3's files in VS Code while the 
 ## 5. Module-Specific Extras
 
 - **Module 1 (GitHub App Setup — live)**: After installing the app, enable experimental flags under **Settings → Experimental Flags**: *Browser tabs*, *Research command*, *Agent tools / Fleet mode*. (We'll re-verify this live.)
-- **Module 3 (Slide Deck Maker — live)**: No global Marp install required. The module installs Marp locally inside the agent session.
-- **Module 2 (Prompt to PR — take-home)**: Requires the same GitHub App alpha access. Setup is identical to Module 1.
+- **Module 2 (Slide Deck Maker — live)**: No global Marp install required. The module installs Marp locally inside the agent session.
+- **Module 3 (Prompt to PR — take-home)**: Requires the same GitHub App alpha access. Setup is identical to Module 1.
 - **Module 4 (Vibe-Code a Game — take-home)**: Requires the same GitHub App alpha access plus a modern browser (Chrome/Edge/Safari).
 - **Module 5 (Chief of Staff — take-home)**: You'll authenticate to Microsoft 365 live during the module. No tenant-level install required.
 - **Module 6 (LLM-Assist — take-home)**: No local setup beyond `gh` — everything runs in a Codespace.

@@ -1,8 +1,8 @@
 # Module 1 · GitHub App: Setup & First Look
 
-> **Time:** 25 min · **Format:** Required, live · **Surface:** GitHub App (alpha) on your laptop
+> **Time:** 25 min · **Format:** Live setup (everyone) · **Surface:** GitHub App (alpha) on your laptop
 >
-> By the end of this module, **everyone** in the room has the GitHub App installed, signed in, configured, and smoke-tested — ready to pick a choose-your-path module for the next 50 minutes.
+> By the end of this module, **everyone** in the room has the GitHub App installed, signed in, configured, and smoke-tested — ready to dive into Module 3 (Slide Deck Maker) for the next 60 minutes.
 
 ---
 
@@ -20,11 +20,14 @@ Get every attendee to the same baseline: a working GitHub App they can drive imm
 
 Open a terminal and run each of these. You're looking for output that looks like the success examples below — not an error or "command not found."
 
+- **Windows:** open **PowerShell** (Start menu → type "PowerShell" → open it).
+- **Mac:** open **Terminal** (Spotlight → type "Terminal" → open it).
+
 - [ ] You completed [prerequisites.md](../prerequisites.md) the day before.
 - [ ] `copilot --version` → prints a version number (e.g. `copilot 0.x.x`).
 - [ ] `gh auth status` → includes a line like `Logged in to github.com account <your-username>`.
 
-If any of these fail, **flag the facilitator now**. We'll fix it live — that's the point of doing setup as a group.
+If any command says **`'xyz' is not recognized`** (Windows) or **`command not found: xyz`** (Mac), close and reopen the terminal first — that fixes most cases. If it still fails, **flag the facilitator now**. We'll fix it live — that's the point of doing setup as a group.
 
 ---
 
@@ -37,9 +40,13 @@ If any of these fail, **flag the facilitator now**. We'll fix it live — that's
 If you haven't already:
 
 1. Download from <https://github.com/github/github-app>. (If you 404, ask in the team Slack — alpha access required.)
-2. Install per platform instructions; launch the app.
+   - **Windows:** the download is an `.exe` installer — double-click and follow the prompts.
+   - **Mac:** the download is a `.dmg` — open it, then drag the **GitHub** app into **Applications**.
+2. Launch the app from the Start menu (Windows) or Applications / Spotlight (Mac).
 3. Sign in with your GitHub identity. A browser tab will open asking you to sign in to GitHub and authorize the app — click **Authorize** on each prompt.
-4. Bump zoom to 110–125% (`Ctrl/Cmd +`) for readability during the session.
+4. Bump zoom for readability during the session:
+   - **Windows:** `Ctrl` + `+`
+   - **Mac:** `Cmd` + `+`
 
 You should land on the **Home** screen with an empty repo list.
 
@@ -47,9 +54,9 @@ You should land on the **Home** screen with an empty repo list.
 
 Go to **Settings → Experimental Flags** and toggle on:
 
-- **Browser tabs** — built-in browser inside agent sessions.
-- **Research command** — `/research` plan mode.
-- **Agent tools / Fleet mode** — parallel agents and Agent Merge.
+- **Browser tabs** — lets the agent open a built-in web browser inside its session. **You'll use this in Module 3 to preview your slide deck.**
+- **Research command** — enables `/research` plan mode. Not used in today's live session; safe to leave on for take-home modules.
+- **Agent tools / Fleet mode** — enables parallel agents and Agent Merge. Not used in today's live session; safe to leave on for take-home Module 2.
 
 Restart the app if prompted.
 
@@ -63,7 +70,7 @@ Click through each top-level surface so you know where things live. **Don't go d
 - **Pull Requests** → all open PRs across your repos, like github.com. You can start a Copilot session *from* any PR.
 - **Issues** → start a session directly from an issue (e.g., "Improve test coverage for API") — the issue body becomes the agent's brief.
 - **Chat** (top-level, not repo-scoped) → general-purpose: research, web search, email triage. Not just code.
-- **Workflows** → scheduled or on-demand automated agent runs. (Stretch goal in Module 2; everyone can come back later.)
+- **Workflows** → scheduled or on-demand automated agent runs. (Stretch goal for take-home Module 2; everyone can come back later.)
 
 ### Step 4 — Add a repo and run a smoke-test prompt (5 min)
 
@@ -81,21 +88,25 @@ You should get a structured response naming files in the repo within 30–60 sec
 
 ### Step 5 — Optional curiosity peek (1 min)
 
-Your Copilot session ran in a sandboxed folder on your laptop. If you're curious where, right-click the session in the sidebar → **"Reveal in Finder"** (Mac) / **"Show in Explorer"** (Win). It lives under a `.copilot/` directory.
+Your Copilot session ran in a sandboxed folder on your laptop. If you're curious where, right-click the session in the sidebar → **Reveal in Finder** (Mac) / **Show in Explorer** (Windows). It lives under a `.copilot/` directory.
 
-*Why we mention this:* every session gets its own isolated folder, so multiple agents can work on the same repo at once without stepping on each other. **Module 2 attendees will see this in action.** Everyone else: you can skip this step.
+- **Windows path looks like:** `%USERPROFILE%\.copilot\sessions\<session-id>\...`
+- **Mac path looks like:** `~/.copilot/sessions/<session-id>/...`
+
+*Why we mention this:* every session gets its own isolated folder, so multiple agents can work on the same repo at once without stepping on each other. **You'll see this matter in Module 3** when the agent creates `notes.md`, installs Marp, and writes `deck.html` — all inside this session's private folder, not your real working directory.
 
 ---
 
-## Pick Your Path (next 50 min)
+## What's Next (next 60 min)
 
-You're set up. Pick **one** of these for the rest of the live session:
+You're set up. The rest of the live session is **[Module 3 · Slide Deck Maker](03-slide-deck-maker.md)** — generate a customer-ready deck end-to-end with Copilot. You'll pick one of four deck types when you get there:
 
-- **[Module 2 · Prompt to PR](02-prompt-to-pr.md)** — drive an agent from a single prompt through implementation, browser test, PR, code review, and Agent Merge. Best for "see the full agentic SDLC."
-- **[Module 3 · Slide Deck Maker](03-slide-deck-maker.md)** — generate a customer-ready deck from a real prospect question. Best for "I build customer decks often."
-- **[Module 4 · Vibe-Code a Game](04-vibe-code-game.md)** — build a working browser game end-to-end, no manual code. Best for the "I built this in an hour" story.
+- **Customer Q&A** — answer a real prospect question.
+- **GitHub Docs summary** — turn a GitHub docs page into slides.
+- **EBC deep-dive** — build an exec briefing on a GitHub topic.
+- **Pricing transition** — procurement-ready deck on the June 1 AI Credits cutover.
 
-If you pre-selected via the workshop form, head straight to that module. Otherwise, scan the three and pick now.
+The other modules (2, 4, 5, 6, 7) are **take-home self-study** — same depth, same playbook framing, run on your own time. Modules 2 and 4 require the same GitHub App alpha access you just set up.
 
 ---
 
@@ -103,7 +114,7 @@ If you pre-selected via the workshop form, head straight to that module. Otherwi
 
 Setup is cheap — a few small chat turns, low token consumption, no AI Credits drama. **But it's the gateway**: every agentic workflow you're about to demo lives behind this one app. When you talk to a customer, the install / sign-in / first-prompt experience you just had is the developer's first 5 minutes too. *That* is what they're buying.
 
-The interesting commercial story starts in your chosen module — agentic vs. chat, AI Credits, pooled budgets, Premium Requests legacy. Hold that thought for the next 50 minutes.
+The interesting commercial story starts in Module 3 — agentic vs. chat, AI Credits, pooled budgets, Premium Requests legacy. Hold that thought for the next 60 minutes.
 
 ---
 

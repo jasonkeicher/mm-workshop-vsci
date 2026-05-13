@@ -50,26 +50,26 @@ Source: [GitHub Copilot is moving to usage-based billing](https://github.blog/ne
 
 ## Per-Module Mapping
 
-The workshop runs as **Stage 1 (required, live)** + **Stage 2 (one of three, live)** + **Stage 3 (take-home)**. Every stage feeds the same commercial throughline.
+The workshop runs as **Stage 1 (live setup)** + **Stage 2 (one live deep-dive on slide decks)** + **Stage 3 (five take-home modules)**. Every stage feeds the same commercial throughline.
 
-### Stage 1 · Required (live)
+### Stage 1 · Live Setup
 
 | Module | Primary motion | Why it matters commercially | SKU to position |
 |---|---|---|---|
 | **1 · GitHub App Setup** | Chat / setup | Low credit consumption, but it's the gateway: every agentic workflow customers will pay for lives behind this app. Sellers who've personally driven the install/sign-in/first-prompt loop talk to it 10× more credibly. | Any (foundational) |
 
-### Stage 2 · Choose-your-path (live)
+### Stage 2 · Live Deep-Dive
 
 | Module | Primary motion | Why it matters commercially | SKU to position |
 |---|---|---|---|
-| **2 · Prompt to PR (Cart Page → Agent Merge)** | **Agentic-heavy** | Cart Page + Code Review + Agent Merge = long autonomous sessions. Maximum credit consumption — and maximum value. | Enterprise (governance + pooled credits) |
-| **3 · Slide Deck Maker** | Mixed | Iterative prompting + agent-generated artifacts. Shows Copilot reaches non-dev personas. | Business → Enterprise (broader seat expansion) |
-| **4 · Vibe-Code Game** | **Agentic-heavy** | End-to-end build from one prompt — disarms skeptical execs. | Pro+ as wedge, Business for orgs |
+| **3 · Slide Deck Maker** | Mixed | Iterative prompting + agent-generated artifacts. Shows Copilot reaches non-dev personas. Four deck types cover real seller motions: Customer Q&A, GitHub Docs summary, EBC deep-dive, Pricing transition. | Business → Enterprise (broader seat expansion) |
 
 ### Stage 3 · Take-home self-study
 
 | Module | Primary motion | Why it matters commercially | SKU to position |
 |---|---|---|---|
+| **2 · Prompt to PR (Cart Page → Agent Merge)** | **Agentic-heavy** | Cart Page + Code Review + Agent Merge = long autonomous sessions. Maximum credit consumption — and maximum value. | Enterprise (governance + pooled credits) |
+| **4 · Vibe-Code Game** | **Agentic-heavy** | End-to-end build from one prompt — disarms skeptical execs. | Pro+ as wedge, Business for orgs |
 | **5 · Chief of Staff (Work-IQ)** | Mixed | M365 grounding + weekly digest = personal-productivity story for execs. | Pro+ for individuals, Enterprise for org rollout |
 | **6 · LLM-Assist Account Research** | **Agentic-heavy** | Multi-step `/welcome` and account-plan flows = real research grounded in data. | Enterprise (data grounding, governance) |
 | **7 · Copilot CLI Deep Dive** | Mixed | One-shot commands → `--yolo` / `/research` go fully agentic. MCP = extensibility story. | Enterprise (MCP, governance) |

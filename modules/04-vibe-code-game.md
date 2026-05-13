@@ -1,12 +1,14 @@
 # Module 4 · Vibe-Code a Game
 
-> **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** GitHub App (alpha)
+> **📚 Take-home self-study module.** Not run live under the current workshop format — the live session focuses on Module 1 (setup) and Module 3 (slide decks). This module is fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../seller-playbook-overview.md).
 >
-> **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. Everything in this module happens inside a single Copilot session in the GitHub App — the agent writes the code, runs the dev server in the session's built-in terminal, and you play the game in the session's built-in browser.
+> **Time:** ~50 min · **Format:** Solo · **Surface:** GitHub App (alpha)
+>
+> **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. Everything in this module happens inside a single Copilot session in the GitHub App — the agent writes the code, runs the dev server in the session's built-in terminal, and you play the game in the session's built-in browser. (Yes — you need the same GitHub App alpha access you set up live in Module 1.)
 >
 > **No-App fallback:** If GitHub App alpha access is unavailable, use the **No-App CLI fallback** near the end of this module.
 >
-> By the end of this module you'll have built a working browser game from scratch, with zero manual code, in under an hour — and you'll have a take-home path to ship it to the world via GitHub Pages.
+> By the end of this module you'll have built a working browser game from scratch, with zero manual code, in under an hour — and you'll have a path to ship it to the world via GitHub Pages.
 
 ---
 
@@ -111,13 +113,13 @@ Push the agent on:
 
 ### Step 7 — Read the Seller Playbook (3 min)
 
-Scan the Seller Playbook below before debrief — you'll talk to it.
+Scan the Seller Playbook below — these are the punchlines you'll use in customer conversations.
 
 ---
 
 ## No-App CLI fallback
 
-Use this path only if the facilitator says GitHub App alpha access is unavailable.
+Use this path if GitHub App alpha access is unavailable.
 
 1. Create a scratch repo locally:
 
@@ -143,7 +145,7 @@ Use this path only if the facilitator says GitHub App alpha access is unavailabl
 
 ---
 
-## Seller Playbook (read before debrief)
+## Seller Playbook
 
 ### What you just experienced (the agentic lens)
 

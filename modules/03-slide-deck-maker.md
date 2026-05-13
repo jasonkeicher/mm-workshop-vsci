@@ -1,12 +1,12 @@
 # Module 3 · Slide Deck Maker for Customer Conversations
 
-> **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** GitHub App (alpha)
+> **Time:** 60 min · **Format:** Live deep-dive (everyone runs this module) · **Surface:** GitHub App (alpha)
 >
 > **Prereq:** [Module 1 · GitHub App Setup](01-github-app-setup.md) complete. Everything in this module happens inside a single Copilot session in the GitHub App — the agent edits files, runs the slide tool in the session's built-in terminal, and you preview the deck in the session's built-in browser.
 >
 > **No-App fallback:** If GitHub App alpha access is unavailable, use the **No-App CLI fallback** near the end of this module.
 >
-> By the end of this module you'll have generated a polished, customer-ready slide deck answering a real prospect question — replacing 4–6 hours of manual deck-building with ~30 minutes of prompting.
+> By the end of this module you'll have generated a polished, customer-ready slide deck answering a real prospect question — replacing 4–6 hours of manual deck-building with ~45 minutes of prompting. The final 5–7 minutes are a group debrief (Step 9).
 
 ---
 
@@ -20,19 +20,20 @@ Use Copilot to produce a **branded, on-message customer deck** in under an hour.
 
 ---
 
-## Guided Steps (50 min)
+## Guided Steps (60 min · debrief embedded in Step 9)
 
-### Step 1 — Pick your scenario (3 min)
+### Step 1 — Pick your deck type (3 min)
 
-Choose **one** customer scenario. **If you don't have a real one in mind, default to Scenario A or B** — both produce strong artifacts you can reuse.
+Pick **one** of these four deck types. The agent flow is identical for all four — only your `notes.md` brief and a couple of iteration prompts change. If you're undecided, **default to Type A** (Customer Q&A) — it's the most reusable.
 
-- **Scenario A** *(recommended default)*: "Why GitHub Copilot Business vs. Enterprise for a 2,000-developer organization."
-- **Scenario B** *(recommended default)*: "What changes for our customers when usage-based billing kicks in on June 1."
-- **Scenario C**: "How GitHub Copilot supports our compliance and security requirements."
-- **Scenario D**: "Copilot ROI for a non-developer audience — PMs, designers, sales."
-- **Scenario E**: *Your own real prospect's open question.*
+| Type | What you'll build | Best fit if… |
+|---|---|---|
+| **A · Customer Q&A** *(default)* | A deck answering a real prospect question (pricing, security, ROI, etc.) | You have a specific customer conversation coming up |
+| **B · GitHub Docs summary** | A "what's in this docs page, in 10 slides" deck built from 1–3 GitHub Docs URLs | You want to learn a GitHub topic by teaching it — or brief a customer who hasn't read the docs |
+| **C · EBC deep-dive** | An exec-briefing-style deck on a chosen GitHub topic (Copilot agents, Advanced Security, Actions, Spaces…) | You have an upcoming EBC, exec briefing, or QBR |
+| **D · Pricing transition** | A procurement/CFO-ready deck on the June 1 AI Credits cutover | You're prepping for billing/procurement conversations |
 
-Write your scenario down. The whole module is grounded in this single brief.
+Write down which type you picked. The whole module is grounded in this single brief.
 
 ### Step 2 — Add a working repo and start a session (3 min)
 
@@ -51,32 +52,96 @@ Open the repo in the App and start a fresh Copilot session. For the model, pick 
 
 You won't create a real Copilot Space in this module (that's a stretch goal). Instead, we'll fake it with a single `notes.md` file the agent writes for you, and prompt as if you had a Space.
 
-In your Copilot session, paste this prompt (fill in the bracketed bits with your scenario from Step 1):
+**Use the prompt template for the deck type you picked in Step 1.** Fill in the bracketed bits and paste into your Copilot session.
+
+#### Type A · Customer Q&A — `notes.md` prompt
 
 ```text
 Create a file called notes.md in this repo. Put my customer brief in it,
 structured with these sections:
 
-- Scenario: <paste your scenario from Step 1>
+- Deck type: Customer Q&A
+- Customer question / topic: <the specific question or topic you're answering>
 - Audience: <who's in the room — title, technical depth, decision power>
 - Customer constraints: <industry, size, current GitHub footprint, competitive lock-in>
 - Reference material (URLs to cite):
   - https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/
   - https://github.com/features/copilot
   - <add 1-3 more relevant public GitHub Copilot URLs>
-- Call to action: <what do you want the customer to DO after the deck>
+- Call to action: <what do you want the customer to DO after the deck — book a pilot, schedule technical session, sign LOI>
 
 Do not start writing the deck yet. Just create notes.md and confirm.
 ```
 
-The agent will create the file. Inspect it in the session's **Changes** panel — this is the ground-truth file the next prompt will reference.
-
-### Step 4 — First-pass deck generation (8 min)
-
-In the same Copilot session, send this prompt (adapt the bracketed bits):
+#### Type B · GitHub Docs summary — `notes.md` prompt
 
 ```text
-Read notes.md in this repo for the scenario, audience, constraints, and CTA.
+Create a file called notes.md in this repo. I want to build a "what's in this
+docs page, in 10 slides" deck. Structure notes.md with:
+
+- Deck type: GitHub Docs summary
+- Source docs URLs (read these before writing the deck):
+  - <paste 1-3 GitHub Docs URLs, e.g. https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises>
+  - <https://docs.github.com/en/copilot/concepts/copilot-spaces>
+  - <https://docs.github.com/en/code-security/getting-started/quickstart-for-securing-your-repository>
+- Audience: <internal team OR customer — and their technical depth>
+- What I want the audience to walk away knowing: <2-3 takeaways>
+- Tone: <educational / pragmatic / exec-summary>
+- Call to action: <next step — read the full docs, schedule deep-dive, etc.>
+
+Do not start writing the deck yet. Fetch the URLs, summarize what each
+contains in 2-3 lines inside notes.md, then confirm.
+```
+
+#### Type C · EBC deep-dive — `notes.md` prompt
+
+```text
+Create a file called notes.md in this repo. I'm building an EBC-style
+deep-dive deck. Structure notes.md with:
+
+- Deck type: EBC deep-dive
+- Topic: <Copilot agents | GitHub Advanced Security | GitHub Actions | Copilot Spaces | other>
+- Audience: <customer exec titles, e.g. CTO + VP Eng + Security Lead>
+- Their current GitHub maturity: <green-field / partial adoption / heavy user>
+- The vision arc I want to land (3 beats): <where they are -> where Copilot/GitHub takes them -> what changes for their org>
+- Reference material (URLs to cite):
+  - https://github.com/features/<relevant-product>
+  - https://github.blog/<recent-relevant-post-or-launch>
+  - <add 1-3 more relevant URLs>
+- Roadmap-safe statements only: yes (no NDA forward-looking detail)
+- Call to action: <pilot, joint POC, exec sponsor alignment, etc.>
+
+Do not start writing the deck yet. Just create notes.md and confirm.
+```
+
+#### Type D · Pricing transition — `notes.md` prompt
+
+```text
+Create a file called notes.md in this repo. I'm building a procurement /
+CFO-ready deck on the GitHub Copilot June 1, 2026 transition to usage-based
+billing. Structure notes.md with:
+
+- Deck type: Pricing transition
+- Audience: <Procurement lead | CFO | VP Eng | mixed>
+- Customer's current Copilot footprint: <seats, plan, annual vs monthly>
+- Their top concern: <bill predictability / governance / cost increase fear / migration timing>
+- Reference material (URLs to cite):
+  - https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/
+  - https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises
+  - https://github.com/pricing
+- Call to action: <review preview bill in May, schedule budget-controls walkthrough, etc.>
+
+Do not start writing the deck yet. Just create notes.md and confirm.
+```
+
+The agent will create the file (and for Type B, also fetch and summarize the docs URLs). Inspect it in the session's **Changes** panel — this is the ground-truth file the next prompt will reference.
+
+### Step 4 — First-pass deck generation (10 min)
+
+In the same Copilot session, send this prompt. **This is the same for all four deck types** — Copilot will adapt based on the `notes.md` you wrote in Step 3.
+
+```text
+Read notes.md in this repo for the deck type, audience, constraints, and CTA.
 
 Produce a Marp-flavored markdown deck named deck.md with these properties:
 - Title slide (customer-facing, includes today's date)
@@ -94,12 +159,16 @@ Then, in the session terminal:
    npm init -y && npm install --save-dev @marp-team/marp-cli
 2. Build the deck: npx marp deck.md
 
-Be specific to this customer. No filler. No "thank you" slides.
+Be specific to this audience. No filler. No "thank you" slides.
 ```
+
+> **Type B note:** the "pricing-mechanics" and "agentic vs chat" slides may not fit a pure docs-summary deck. Tell the agent: *"Skip the pricing-mechanics and agentic-vs-chat slides if they don't fit the source docs. Stay faithful to the docs content."*
+>
+> **Type D note:** for the pricing-transition deck, *expand* those two slides into 3–4 slides each — they're the core of your deck.
 
 The agent will write `deck.md`, install Marp inside the session's own private copy of the repo, and build `deck.html`.
 
-> **Heads up:** these commands run inside the agent's session environment — not your local PowerShell. The `&&` chaining and `npm`/`npx` calls are the agent's job; you don't need to run them yourself.
+> **Heads up:** these commands run inside the agent's session environment — not your local PowerShell or Terminal. The `&&` chaining and `npm`/`npx` calls are the agent's job; you don't need to run them yourself.
 
 **What you should see in the Changes panel:** `deck.md` with `---` slide separators, frontmatter at the top setting `marp: true` and `theme: gaia`, and `<!-- speaker notes -->` HTML comments under each slide. Plus `deck.html` once Marp finishes.
 
@@ -120,20 +189,28 @@ Open the **built-in browser** tab (experimental flag from Module 1) and navigate
 >
 > If the built-in browser tab is missing, enable it via Settings → Experimental Flags → *Browser tabs* (covered in Module 1).
 
-### Step 6 — Iterate on tone, structure, and visuals (10 min)
+### Step 6 — Iterate on tone, structure, and visuals (15 min)
 
 In the same Copilot session, use focused prompts. **Don't ask for everything at once** — small surgical edits.
 
-> **Hard guardrail: cap yourself at 3–4 surgical passes.** Perfect is the enemy of done; you can keep iterating after the workshop.
+> **Hard guardrail: cap yourself at 3–5 surgical passes.** Perfect is the enemy of done; you can keep iterating after the workshop.
 
-- *"Slide 3's headline is generic. Rewrite it to lead with the customer's pain, not the product. Then rebuild deck.html."*
-- *"Add a slide between 5 and 6 with a concrete cost example: a 200-dev team running 50% agentic, 50% chat for one month. Then rebuild deck.html."*
+**Generic surgical prompts (any deck type):**
+
+- *"Slide 3's headline is generic. Rewrite it to lead with the audience's pain, not the product. Then rebuild deck.html."*
 - *"The speaker notes on slide 8 are too long. Tighten to 30 seconds, no jargon. Then rebuild deck.html."*
-- *"Restructure the deck so the CTA appears at slide 7, not the end. Move the pricing detail to an appendix section. Then rebuild deck.html."*
+- *"Restructure the deck so the CTA appears at slide 7, not the end. Move the supporting detail to an appendix section. Then rebuild deck.html."*
+
+**Type-specific prompts to try:**
+
+- **Type A (Customer Q&A):** *"Add a slide between 5 and 6 with a concrete cost example: a 200-dev team running 50% agentic, 50% chat for one month. Then rebuild deck.html."*
+- **Type B (GitHub Docs summary):** *"Summarize section 4 of the source docs into a single slide. Pull 1–2 direct quotes from the docs into the speaker notes. Then rebuild deck.html."*
+- **Type C (EBC deep-dive):** *"Add a 'demo callout' slide after the product overview: 90 seconds of what we'd show live in the EBC, with the customer's exact use case named. Then rebuild deck.html."*
+- **Type D (Pricing transition):** *"Add a slide modeling our customer's actual spend before and after June 1: 350 Business seats, ~30% heavy agentic users. Use published rates. Then rebuild deck.html."*
 
 Each prompt = a session turn. Refresh the built-in browser tab after each rebuild.
 
-### Step 7 — Export and review (8 min)
+### Step 7 — Export and review (5 min)
 
 Ask the agent to produce the final outputs:
 
@@ -155,13 +232,19 @@ For each red flag, do one more prompt-edit pass.
 
 Ask the agent: *"Commit notes.md, deck.md, and deck.html with a descriptive message, then open a pull request."*
 
-The agent runs `git` for you inside the session — **you don't need a local clone of the repo on your laptop**. The PR shows up on github.com just like in Module 2. (You don't have to merge it — the PR itself is your portable artifact you can pull up on any device.)
+The agent runs `git` for you inside the session — **you don't need a local clone of the repo on your laptop**. The PR shows up on github.com just like a normal PR. (You don't have to merge it — the PR itself is your portable artifact you can pull up on any device during the debrief.)
 
-> **If you're behind on time, skip this step** — it's optional. Step 9 (Seller Playbook) matters more for the debrief.
+> **If you're behind on time, skip this step** — it's optional. Step 9 (debrief) matters more.
 
-### Step 9 — Read the Seller Playbook (4 min)
+### Step 9 — Group debrief (5–7 min, facilitator-led)
 
-Scan the Seller Playbook below before debrief — you'll talk to it. Focus on the **Pro+ as wedge** insight and the **"Copilot is for developers" objection handler**.
+This is the workshop's only debrief — it lives here, not in a separate block. The facilitator will round-robin everyone in the room, **grouped by deck type (A → B → C → D)**:
+
+1. **Show your deck** (~30 sec each): pop open `deck.html` in the built-in browser (or PDF). Screen-share if remote.
+2. **One thing that surprised you** (1 sentence each).
+3. **One Seller Playbook moment** (1 sentence each): which part of your activity was *agentic*? How would you describe the cost to a customer?
+
+Hold the Seller Playbook reading below until after the workshop if time is tight — you'll talk to the punchlines from memory during the debrief.
 
 ---
 
@@ -178,7 +261,7 @@ Use this path only if the facilitator says GitHub App alpha access is unavailabl
    copilot --yolo
    ```
 
-2. In the Copilot CLI session, use the same prompts from Steps 3 and 4. The agent should create `notes.md`, create `deck.md`, install Marp locally, and build `deck.html`.
+2. In the Copilot CLI session, use the same prompts from Steps 3 and 4 (pick the deck-type template that matches your choice in Step 1). The agent should create `notes.md`, create `deck.md`, install Marp locally, and build `deck.html`.
 3. For Step 5, ask the agent to serve the folder with `npx http-server -p 8000 .`, then open `http://localhost:8000/deck.html` in your regular browser instead of the GitHub App built-in browser.
 4. Continue Steps 6 and 7 in the same CLI session. For Step 8, either skip the PR or create a private GitHub repo first, then ask the agent to push a branch and open a PR.
 
@@ -188,15 +271,16 @@ Use this path only if the facilitator says GitHub App alpha access is unavailabl
 - Build the same deck for a different vertical (FinServ → Healthcare → Manufacturing) by changing only `notes.md`. Time how long the second pass takes.
 - Try the same workflow in the **Copilot CLI** (`copilot --yolo` in a local folder) and compare the experience to running it in the GitHub App.
 - Generate a **2-page customer-facing handout** version of the deck using the same notes.
+- Run a second deck type back-to-back — e.g. you did Type A live; build a Type D for the same customer at home.
 
 ---
 
-## Seller Playbook (read before debrief)
+## Seller Playbook (read after the workshop)
 
 ### What you just experienced (the agentic lens)
 
 - **Mostly chat-style** with bursts of agentic work. Each prompt = one model turn. The deck generation itself is a multi-file write but compact.
-- Compared to Module 2, **dramatically lower token consumption** — but the *value* is on the same axis: a deck that took 4 hours now takes 30 minutes.
+- **Dramatically lower token consumption** than a Cart Page → Agent Merge workflow — but the *value* is on the same axis: a deck that took 4 hours now takes 45 minutes.
 - **Important seller insight**: this is a workload that doesn't *need* an Enterprise SKU. Pro+ at $39/mo with $39 in AI Credits covers a *lot* of decks. That makes Copilot a reasonable individual purchase — and a wedge into broader org adoption.
 
 ### Premium Requests today
@@ -208,6 +292,13 @@ Use this path only if the facilitator says GitHub App alpha access is unavailabl
 
 - Same workload → token-based, very predictable. **Cached tokens** matter here — prompt iterations on the same `notes.md` reuse cache, **lowering effective cost dramatically**. This is a great talking point: "the more you iterate, the cheaper each turn gets."
 - For an org rolling Copilot to non-devs (PMs, sales), pooled credits matter: PMs use less than agentic devs, contributing their unused credits to the pool.
+
+### Which deck type opens which expansion conversation
+
+- **Type A (Customer Q&A)** → land/expand inside the customer's current GitHub footprint. Best for AE-led conversations.
+- **Type B (GitHub Docs summary)** → internal enablement angle. Use it to onboard your customer's champions; convert champions into seat expansion.
+- **Type C (EBC deep-dive)** → executive-sponsor conversations. Pair with the Customer Success team; lands the multi-year story.
+- **Type D (Pricing transition)** → procurement + CFO conversations. This is the deck that closes the renewal cleanly through the June 1 cutover.
 
 ### Customer talk track
 
@@ -245,3 +336,4 @@ Use this path only if the facilitator says GitHub App alpha access is unavailabl
 | Agent rewrites too much | Be more surgical: name the slide and the change. "On slide 5, replace headline only." |
 | Agent stops mid-build / session times out | Just say *"continue"* in the same session — the session's worktree state is preserved across turns |
 | PDF export fails | Session sandbox may be missing Chrome. Stick with the HTML output, or ask the agent to retry with `npx marp deck.md --pdf --allow-local-files`. |
+| Deck-type reference URLs unreachable | Fall back to Type A (Customer Q&A) — it only relies on your own brief plus stable GitHub URLs |

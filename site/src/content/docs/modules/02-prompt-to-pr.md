@@ -1,11 +1,13 @@
 ---
 title: "Module 2 · Prompt to PR"
-description: "Drive a coding agent from prompt to merged PR end-to-end with Copilot Code Review and Agent Merge."
+description: "Take-home self-study: drive a coding agent from prompt to merged PR end-to-end with Copilot Code Review and Agent Merge."
 ---
 
-> **Time:** 50 min · **Format:** Choose-your-path (live) · **Surface:** GitHub App (alpha)
+> **📚 Take-home self-study module.** Not run live under the current workshop format — the live session focuses on Module 1 (setup) and Module 3 (slide decks). This module is fully runnable on your own time; the commercial story still maps to the [Seller Playbook Overview](../../seller-playbook-overview/).
 >
-> **Prereq:** [Module 1 · GitHub App Setup](../01-github-app-setup/) complete. The app is installed, signed in, and you've run a smoke-test prompt.
+> **Time:** ~50 min · **Format:** Solo · **Surface:** GitHub App (alpha)
+>
+> **Prereq:** [Module 1 · GitHub App Setup](../01-github-app-setup/) complete. The app is installed, signed in, and you've run a smoke-test prompt. (Yes — you need the same GitHub App alpha access you set up live in Module 1.)
 >
 > By the end of this module you'll have driven a coding agent from a single prompt through implementation, a built-in browser test, a pull request, automated code review, and Agent Merge — without leaving the GitHub App.
 
@@ -25,9 +27,9 @@ Experience the **agentic SDLC** end-to-end. After this module, you can:
 
 ### Step 1 — Add the demo repo and kick off the agent (5 min)
 
-In the GitHub App, find the **+ Add repository** control (near the repo selector at the top). Search for the facilitator-confirmed full repo path for `demo_octocat_supply` (for example, `<owner>/demo_octocat_supply`) and add it. Do not rely on the bare repo name if search results are noisy.
+In the GitHub App, find the **+ Add repository** control (near the repo selector at the top). Search for the full repo path for `demo_octocat_supply` (for example, `<owner>/demo_octocat_supply`) and add it. Do not rely on the bare repo name if search results are noisy.
 
-> **Heads-up:** the demo repo requires the same alpha access as the GitHub App itself, plus repo access. If the full path doesn't show up, flag the facilitator — see Troubleshooting for the fallback.
+> **Heads-up:** the demo repo requires the same alpha access as the GitHub App itself, plus repo access. If the full path doesn't show up, ask in the team Slack channel for the confirmed `owner/repo` path — see Troubleshooting for the fallback.
 
 **Immediately** start a new Copilot session in the repo with this prompt (don't tour while it runs — let the agent work):
 
@@ -103,7 +105,7 @@ On the PR page, look for an **"Agent Merge"** button (label may vary in alpha). 
 ### Step 7 — Seller Playbook reading & reflection (13 min)
 
 1. **Read** the Seller Playbook below (~8 min). Focus on the agentic-vs-chat framing and the objection handler.
-2. **Pick one customer** (~5 min) you've talked to in the last 30 days who would care about this workflow. Jot down which talk-track question you'd open with. You'll share at debrief.
+2. **Pick one customer** (~5 min) you've talked to in the last 30 days who would care about this workflow. Jot down which talk-track question you'd open with — then bring it to your next team huddle or share in the Slack channel.
 
 ---
 
@@ -116,7 +118,7 @@ On the PR page, look for an **"Agent Merge"** button (label may vary in alpha). 
 
 ---
 
-## Seller Playbook (read before debrief)
+## Seller Playbook
 
 ### What you just experienced (the agentic lens)
 
@@ -165,7 +167,7 @@ On the PR page, look for an **"Agent Merge"** button (label may vary in alpha). 
 | Symptom | Fix |
 |---|---|
 | Agent fails to spin up | Check `copilot --version` works in terminal; restart the GitHub App |
-| `demo_octocat_supply` not findable | Confirm the full `owner/repo` path and repo access with the facilitator. **Fallback:** any small public repo of your own — prompt for a small feature instead of the Cart Page. |
+| `demo_octocat_supply` not findable | Confirm the full `owner/repo` path and repo access in the team Slack channel. **Fallback:** any small public repo of your own — prompt for a small feature instead of the Cart Page. |
 | Built-in browser tab missing | Settings → Experimental Flags → enable *Browser tabs* (covered in Module 1) |
 | Fleet mode session fails to start | Known alpha flake. Re-trigger; or fall back to single-agent mode (sequential execution, one agent at a time). |
 | `npm run dev` (or `make dev`) fails | Open built-in terminal: `npm install` then `npm run dev` again; check Node version (`node -v` should be 18+) |

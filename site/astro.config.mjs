@@ -32,17 +32,17 @@ export default defineConfig({
         { label: 'Seller Playbook Overview', slug: 'seller-playbook-overview' },
         { label: 'Facilitator Guide', slug: 'facilitator-guide' },
         {
-          label: 'Modules',
+          label: 'Live modules',
           items: [
-            { label: '1 · GitHub App Setup (required)', slug: 'modules/01-github-app-setup' },
-            { label: '2 · Prompt to PR', slug: 'modules/02-prompt-to-pr' },
+            { label: '1 · GitHub App Setup', slug: 'modules/01-github-app-setup' },
             { label: '3 · Slide Deck Maker', slug: 'modules/03-slide-deck-maker' },
-            { label: '4 · Vibe-Code a Game', slug: 'modules/04-vibe-code-game' },
           ],
         },
         {
           label: 'Take-home self-study',
           items: [
+            { label: '2 · Prompt to PR', slug: 'modules/02-prompt-to-pr' },
+            { label: '4 · Vibe-Code a Game', slug: 'modules/04-vibe-code-game' },
             { label: '5 · Chief of Staff', slug: 'modules/05-chief-of-staff' },
             { label: '6 · LLM-Assist', slug: 'modules/06-llm-assist' },
             { label: '7 · Copilot CLI', slug: 'modules/07-copilot-cli' },

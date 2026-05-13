@@ -2,7 +2,7 @@
 
 A **90-minute** hands-on workshop for **Mid-Market Account Executives and Sellers** with limited GitHub Copilot exposure. Everyone does the required setup module live, then picks **one** of three choose-your-path modules. Three additional take-home modules extend the same commercial story for self-study.
 
-> **Goal:** By the end of the session, every seller has personally driven Copilot through a real-world workflow they can demo to a customer — and can speak fluently about the **June 1, 2026 transition to usage-based billing** (GitHub AI Credits) using firsthand experience.
+> **Goal:** By the end of the session, every seller has personally driven Copilot through a real-world workflow they can demo to a customer, can speak fluently about the **June 1, 2026 transition to usage-based billing** (GitHub AI Credits) using firsthand experience, and has a solid answer to "I am not a developer, so I use Claude."
 
 ---
 
